@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nano/Monika/IntelRealSense/example-utils.hpp
+iostream
+-
+string
+-
+map
+-
+librealsense2/rs.hpp
+-
+algorithm
+-
+
+/home/nano/Monika/IntelRealSense/main.cpp
+librealsense2/rs.hpp
+-
+iostream
+-
+iomanip
+-
+example-utils.hpp
+/home/nano/Monika/IntelRealSense/example-utils.hpp
+

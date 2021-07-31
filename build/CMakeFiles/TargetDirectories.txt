@@ -1,0 +1,3 @@
+/home/nano/Monika/IntelRealSense/build/CMakeFiles/rebuild_cache.dir
+/home/nano/Monika/IntelRealSense/build/CMakeFiles/IntelRealSense.dir
+/home/nano/Monika/IntelRealSense/build/CMakeFiles/edit_cache.dir
