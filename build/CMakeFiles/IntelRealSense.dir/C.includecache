@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nano/Monika/IntelRealSense/src/AHRS/FusionAhrs.c
+FusionAhrs.h
+/home/nano/Monika/IntelRealSense/src/AHRS/FusionAhrs.h
+float.h
+-
+math.h
+-
+
+/home/nano/Monika/IntelRealSense/src/AHRS/FusionAhrs.h
+FusionTypes.h
+/home/nano/Monika/IntelRealSense/src/AHRS/FusionTypes.h
+stdbool.h
+-
+
+/home/nano/Monika/IntelRealSense/src/AHRS/FusionBias.c
+FusionBias.h
+/home/nano/Monika/IntelRealSense/src/AHRS/FusionBias.h
+math.h
+/home/nano/Monika/IntelRealSense/src/AHRS/math.h
+
+/home/nano/Monika/IntelRealSense/src/AHRS/FusionBias.h
+FusionTypes.h
+/home/nano/Monika/IntelRealSense/src/AHRS/FusionTypes.h
+stdbool.h
+-
+
+/home/nano/Monika/IntelRealSense/src/AHRS/FusionTypes.h
+math.h
+-
+stdint.h
+-
+

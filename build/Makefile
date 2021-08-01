@@ -123,32 +123,86 @@ IntelRealSense/fast:
 	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/build
 .PHONY : IntelRealSense/fast
 
-main.o: main.cpp.o
+src/AHRS/FusionAhrs.o: src/AHRS/FusionAhrs.c.o
 
-.PHONY : main.o
+.PHONY : src/AHRS/FusionAhrs.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/AHRS/FusionAhrs.c.o:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/FusionAhrs.c.o
+.PHONY : src/AHRS/FusionAhrs.c.o
 
-main.i: main.cpp.i
+src/AHRS/FusionAhrs.i: src/AHRS/FusionAhrs.c.i
 
-.PHONY : main.i
+.PHONY : src/AHRS/FusionAhrs.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/AHRS/FusionAhrs.c.i:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/FusionAhrs.c.i
+.PHONY : src/AHRS/FusionAhrs.c.i
 
-main.s: main.cpp.s
+src/AHRS/FusionAhrs.s: src/AHRS/FusionAhrs.c.s
 
-.PHONY : main.s
+.PHONY : src/AHRS/FusionAhrs.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/AHRS/FusionAhrs.c.s:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/FusionAhrs.c.s
+.PHONY : src/AHRS/FusionAhrs.c.s
+
+src/AHRS/FusionBias.o: src/AHRS/FusionBias.c.o
+
+.PHONY : src/AHRS/FusionBias.o
+
+# target to build an object file
+src/AHRS/FusionBias.c.o:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/FusionBias.c.o
+.PHONY : src/AHRS/FusionBias.c.o
+
+src/AHRS/FusionBias.i: src/AHRS/FusionBias.c.i
+
+.PHONY : src/AHRS/FusionBias.i
+
+# target to preprocess a source file
+src/AHRS/FusionBias.c.i:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/FusionBias.c.i
+.PHONY : src/AHRS/FusionBias.c.i
+
+src/AHRS/FusionBias.s: src/AHRS/FusionBias.c.s
+
+.PHONY : src/AHRS/FusionBias.s
+
+# target to generate assembly for a file
+src/AHRS/FusionBias.c.s:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/FusionBias.c.s
+.PHONY : src/AHRS/FusionBias.c.s
+
+src/main.o: src/main.cpp.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -159,9 +213,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... IntelRealSense"
 	@echo "... edit_cache"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/AHRS/FusionAhrs.o"
+	@echo "... src/AHRS/FusionAhrs.i"
+	@echo "... src/AHRS/FusionAhrs.s"
+	@echo "... src/AHRS/FusionBias.o"
+	@echo "... src/AHRS/FusionBias.i"
+	@echo "... src/AHRS/FusionBias.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 
