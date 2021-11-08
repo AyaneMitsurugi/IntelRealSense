@@ -2,8 +2,10 @@
 // Copyright(c) 2019 Intel Corporation. All Rights Reserved.
 #include <librealsense2/rs.hpp>
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 #include <stdio.h>
+#include <time.h>
 #include "IntelRealSenseDemo/example-utils.hpp"
 #include "AHRS/Fusion.h"
 #include "AHRS/FusionAhrs.h"
@@ -28,8 +30,25 @@ FusionVector3 accelerometerSensitivity = {
     accelerometerSensitivity.axis.z = 16.0f,
 }; // replace these values with actual sensitivity in g per lsb as specified in accelerometer datasheet
 
+// Get current date-time in YYYY-MM-DD.HH:mm:ss format
+const std::string currentDateTime() {
+    time_t    now     = time(0);
+    struct tm tstruct;
+    char      buffer [80];
+    tstruct           = *localtime(&now);
+
+    strftime(buffer, sizeof(buffer), "../output_data/%Y-%m-%d.%X", &tstruct);
+
+    return buffer;
+};
+
 int main()
 {
+    std::string buffer = currentDateTime();
+
+    std::ofstream outfile;
+    outfile.open (buffer);
+
     try {
         std::string serial;
         if (!device_with_streams({ RS2_STREAM_POSE}, serial))
@@ -55,7 +74,15 @@ int main()
         // Initialise AHRS algorithm
         FusionAhrsInitialise(&fusionAhrs, 0.5f); // gain = 0.5
 
-    /***** MAIN LOOP *****/
+        // Save headers in the output file
+        if (outfile.is_open()) {
+            outfile << "Translation X [m],Translation Y [m], Translation Z [m],";
+            outfile << "Velocity X [m/s], Velocity Y [m/s], Velocity Z [m/s],";
+            outfile << "Angular acceleration X [rad/s^2],Angular acceleration Y [rad/s^2],Angular acceleration Z [rad/s^2]";
+            outfile << "Roll [degrees],Pitch[degrees],Yaw[degrees]," << std::endl;
+        }
+
+        /***** MAIN LOOP *****/
         while (true)
         {
             // Wait for the next set of frames from the camera
@@ -66,9 +93,6 @@ int main()
 
             // Cast the frame to pose_frame and get its data
             auto pose_data = f.as<rs2::pose_frame>().get_pose_data();
-
-            // Print the x, y, z values of the translation, relative to initial position
-            std::cout << "Device Position X " << std::setprecision(3) << std::fixed << pose_data.translation.x << " Y " << pose_data.translation.y << " Z " << pose_data.translation.z << " [m]\n";
 
 	    // Calibrate gyroscope
             FusionVector3 uncalibratedGyroscope = {
@@ -92,10 +116,20 @@ int main()
             // Update AHRS algorithm
             FusionAhrsUpdateWithoutMagnetometer(&fusionAhrs, calibratedGyroscope, calibratedAccelerometer, samplePeriod);
 
-	    // Print Euler angles
+            // Save x, y, z values of the translation, velocity and angular acceleration
+            // relative to initial position in the output file
+            if (outfile.is_open()) {
+                outfile << std::setprecision(3) << std::fixed << pose_data.translation.x << "," << pose_data.translation.y << "," << pose_data.translation.z;
+	        outfile << std::setprecision(3) << std::fixed << pose_data.velocity.x << "," << pose_data.velocity.y << "," << pose_data.velocity.z;
+	        outfile << std::setprecision(3) << std::fixed << pose_data.angular_acceleration.x << "," << pose_data.angular_acceleration.y << "," << pose_data.angular_acceleration.z;
+            }
+	    // Save Euler angles in the output file
             FusionEulerAngles eulerAngles = FusionQuaternionToEulerAngles(FusionAhrsGetQuaternion(&fusionAhrs));
-	    std::cout << "Roll " << std::setprecision(3) << std::fixed << eulerAngles.angle.roll << " Pitch " << eulerAngles.angle.pitch << " Yaw " << eulerAngles.angle.yaw << " [degrees]\n";
+	    if (outfile.is_open()) {
+            outfile << std::setprecision(3) << std::fixed << eulerAngles.angle.roll << "," << eulerAngles.angle.pitch << "," << eulerAngles.angle.yaw << std::endl;
+            }
         }
+        outfile.close();
         return EXIT_SUCCESS;
     }
     catch (const rs2::error & e)
@@ -109,4 +143,3 @@ int main()
         return EXIT_FAILURE;
     }
 }
-
