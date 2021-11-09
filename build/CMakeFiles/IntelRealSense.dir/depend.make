@@ -9,11 +9,11 @@ CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o: ../src/AHRS/Fusion
 CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o: ../src/AHRS/Fusion/FusionBias.h
 CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o: ../src/AHRS/Fusion/FusionTypes.h
 
-CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o: ../src/AHRS/Madgwick/MadgwickAHRS.cpp
-CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o: ../src/AHRS/Madgwick/MadgwickAHRS.h
+CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o: ../src/AHRS/Madgwick/MadgwickAHRS.c
+CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o: ../src/AHRS/Madgwick/MadgwickAHRS.h
 
-CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o: ../src/AHRS/Mahony/MahonyAHRS.cpp
-CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o: ../src/AHRS/Mahony/MahonyAHRS.h
+CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o: ../src/AHRS/Mahony/MahonyAHRS.c
+CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o: ../src/AHRS/Mahony/MahonyAHRS.h
 
 CMakeFiles/IntelRealSense.dir/src/main.cpp.o: ../src/AHRS/Fusion/Fusion.h
 CMakeFiles/IntelRealSense.dir/src/main.cpp.o: ../src/AHRS/Fusion/FusionAhrs.h

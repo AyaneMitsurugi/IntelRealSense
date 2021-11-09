@@ -38,3 +38,19 @@ math.h
 stdint.h
 -
 
+/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.c
+math.h
+-
+MadgwickAHRS.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
+
+/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
+
+/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.c
+MahonyAHRS.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
+stdio.h
+-
+
+/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
+

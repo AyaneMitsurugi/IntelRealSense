@@ -14,10 +14,15 @@
 #include "AHRS/Madgwick/MadgwickAHRS.h"
 #include "AHRS/Mahony/MahonyAHRS.h"
 
-float precision    = 6.0;
+/* PRIVATE VARIABLES */
+float precision = 6.0;
+
+// Gyroscope
 float gx = 0.0;
 float gy = 0.0;
 float gz = 0.0;
+
+// Accelerometer
 float ax = 0.0;
 float ay = 0.0;
 float az = 0.0;
@@ -39,9 +44,12 @@ FusionVector3 accelerometerSensitivity = {
     accelerometerSensitivity.axis.z = 16.0f,
 }; // replace these values with actual sensitivity in g per lsb as specified in accelerometer datasheet
 
-/* AHRS Madgwick-related parameters */
-
-/* AHRS Mahony-related parameters */
+/* AHRS Madgwick-Mahony-related parameters */
+float inv_sample_freq   = (1.0f / samplePeriod);  // Inverse of sample frequency [s]
+float are_angles_computed = 0;
+float roll              = 0.0f;
+float pitch             = 0.0f;
+float yaw               = 0.0f;
 
 /* FUNCTIONS */
 /* Return buffer of current date and time in YYYY-MM-DD-HH:mm:ss format */
@@ -159,11 +167,10 @@ int main()
             FusionEulerAngles eulerAngles = FusionQuaternionToEulerAngles(FusionAhrsGetQuaternion(&fusionAhrs));
 
             /* AHRS Madgwick-related functions */
-            Madgwick();
-            MadgwickUpdateIMU(gx, gy, gz, ax, ay, az);
-            MadgwickComputeAngles();
+            MadgwickGyroscopeAccelerometer(gx, gy, gz, ax, ay, az, inv_sample_freq, are_angles_computed);
 
             /* AHRS Mahony-related functions */
+            MahonyGyroscopeAccelerometer(gx, gy, gz, ax, ay, az, inv_sample_freq, are_angles_computed);
 
 	    // Output file - save roll-pitch-yaw calculated by all three algorithms
 	    if (outfile.is_open()) {

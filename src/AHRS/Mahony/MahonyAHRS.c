@@ -17,17 +17,23 @@
 #define IMU_MAHONY_C_
 
 /* Includes ------------------------------------------------------------------*/
-#include "IMU_Mahony.h"
-#include "IMU_algorithms_main.h"
+#include "MahonyAHRS.h"
+#include <stdio.h>
 
 /* Private variables ---------------------------------------------------------*/
-volatile float twoKp       = TWO_KP;  // 2 * proportional gain (Kp)
-volatile float twoKi       = TWO_KI;  // 2 * integral gain (Ki)
+float twoKp = TWO_KP;  // 2 * proportional gain (Kp)
+float twoKi = TWO_KI;  // 2 * integral gain (Ki)
 
 // Integral error terms scaled by integral gain (Ki):
-volatile float integralFBx = 0.0f;
-volatile float integralFBy = 0.0f;
-volatile float integralFBz = 0.0f;
+float integralFBx = 0.0f;
+float integralFBy = 0.0f;
+float integralFBz = 0.0f;
+
+// Quaternions of sensor frame relative to auxiliary
+float q0 = 1.0;
+float q1 = 0.0;
+float q2 = 0.0;
+float q3 = 0.0;
 
 /* Private function implementation  ------------------------------------------*/
 
@@ -37,7 +43,7 @@ void MahonyPrintfIntegralErrorTerms(void) {
 	printf("FBx = %d, FBy = %d, FBz = %d", integralFBx, integralFBy, integralFBz);
 }
 
-void MahonyGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
+void MahonyGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, float inv_sample_freq, float are_angles_computed) {
 	float normalization;
     float q0q0, q0q1, q0q2, q0q3, q1q1, q1q2, q1q3, q2q2, q2q3, q3q3;
 	float hx, hy, bx, bz;
@@ -47,7 +53,7 @@ void MahonyGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, floa
 
 	// Use algorithm without magnetometer when its measurement are invalid (avoids NaN in magnetometer normalisation)
 	if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
-		MahonyGyroscopeAccelerometer(gx, gy, gz, ax, ay, az);
+		MahonyGyroscopeAccelerometer(gx, gy, gz, ax, ay, az, inv_sample_freq, are_angles_computed);
 		return;
 	}
 
@@ -100,9 +106,9 @@ void MahonyGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, floa
 		// If integral feedback is enabled
 		if(twoKi > 0.0f) {
 			// Integral error terms scaled by integral gain (Ki):
-			integralFBx += twoKi * halfex * INV_SAMPLE_FREQ;
-			integralFBy += twoKi * halfey * INV_SAMPLE_FREQ;
-			integralFBz += twoKi * halfez * INV_SAMPLE_FREQ;
+			integralFBx += twoKi * halfex * inv_sample_freq;
+			integralFBy += twoKi * halfey * inv_sample_freq;
+			integralFBz += twoKi * halfez * inv_sample_freq;
 
 			// Apply integral feedback:
 			gx          += integralFBx;
@@ -124,9 +130,9 @@ void MahonyGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, floa
 
 	// Integrate rate of change of quaternions
 	// Pre-multiply common factors:
-	gx *= (0.5f * INV_SAMPLE_FREQ);
-	gy *= (0.5f * INV_SAMPLE_FREQ);
-	gz *= (0.5f * INV_SAMPLE_FREQ);
+	gx *= (0.5f * inv_sample_freq);
+	gy *= (0.5f * inv_sample_freq);
+	gz *= (0.5f * inv_sample_freq);
 
 	qa  = q0;
 	qb  = q1;
@@ -144,10 +150,10 @@ void MahonyGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, floa
 	q2           *= normalization;
 	q3           *= normalization;
 
-	areAnglesComputed = 0;
+	are_angles_computed = 0;
 }
 
-void MahonyGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float ay, float az) {
+void MahonyGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float ay, float az, float inv_sample_freq, float are_angles_computed) {
 	float normalization;
 	float halfvx, halfvy, halfvz;
 	float halfex, halfey, halfez;
@@ -175,9 +181,9 @@ void MahonyGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float 
 		// If integral feedback is enabled
 		if(twoKi > 0.0f) {
 			// Integral error terms scaled by integral gain (Ki):
-			integralFBx += twoKi * halfex * INV_SAMPLE_FREQ;
-			integralFBy += twoKi * halfey * INV_SAMPLE_FREQ;
-			integralFBz += twoKi * halfez * INV_SAMPLE_FREQ;
+			integralFBx += twoKi * halfex * inv_sample_freq;
+			integralFBy += twoKi * halfey * inv_sample_freq;
+			integralFBz += twoKi * halfez * inv_sample_freq;
 
 			// Apply integral feedback:
 			gx          += integralFBx;
@@ -199,9 +205,9 @@ void MahonyGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float 
 
 	// Integrate rate of change of quaternions
 	// Pre-multiply common factors:
-	gx *= (0.5f * INV_SAMPLE_FREQ);
-	gy *= (0.5f * INV_SAMPLE_FREQ);
-	gz *= (0.5f * INV_SAMPLE_FREQ);
+	gx *= (0.5f * inv_sample_freq);
+	gy *= (0.5f * inv_sample_freq);
+	gz *= (0.5f * inv_sample_freq);
 
 	qa  = q0;
 	qb  = q1;
@@ -219,7 +225,7 @@ void MahonyGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float 
 	q2           *= normalization;
 	q3           *= normalization;
 
-	areAnglesComputed = 0;
+	are_angles_computed = 0;
 }
 
 #endif /* IMU_MAHONY_C_ */

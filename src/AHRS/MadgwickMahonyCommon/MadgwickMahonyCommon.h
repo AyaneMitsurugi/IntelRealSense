@@ -28,24 +28,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include <stdio.h>
-#include "IMU_HAL_library.h"
-#include "IMU_Mahony.h"
-#include "IMU_Madgwick.h"
-
-/* Private defines -----------------------------------------------------------*/
-#define SAMPLE_FREQ      512.0f                // Sample frequency [Hz]
-#define INV_SAMPLE_FREQ  (1.0f / SAMPLE_FREQ)  // Inverse of sample frequency [s]
-#define ENABLE_PRINTF    1
-
-/* External variables --------------------------------------------------------*/
-extern volatile float gx, gy, gz;              // Gyroscope
-extern volatile float ax, ay, az;              // Accelerometer
-extern volatile float mx, my, mz;              // Magnetometer
-
-// Mahony & Madgwick - COMMON
-extern volatile uint8_t areAnglesComputed;     // 1 => roll, pitch and yaw have been computed using computeAngles(); 0 => angles aren't known
-extern volatile float roll, pitch, yaw;
-extern volatile float q0, q1, q2, q3;          // Quaternions of sensor frame relative to auxiliary frame
+#include "../Madgwick/MadgwickAHRS.h"
+#include "../Mahony/MahonyAHRS.h"
 
 /* Functions prototypes ------------------------------------------------------*/
 void use_specific_IMU_algorithm(uint8_t IMU_algorithm);

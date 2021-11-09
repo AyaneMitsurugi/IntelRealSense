@@ -38,25 +38,9 @@ math.h
 stdint.h
 -
 
-/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.cpp
-MadgwickAHRS.h
 /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
-math.h
--
-
-/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
-math.h
--
-
-/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.cpp
-MahonyAHRS.h
-/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
-math.h
--
 
 /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
-math.h
--
 
 /home/nano/Monika/IntelRealSense/src/IntelRealSenseDemo/example-utils.hpp
 iostream

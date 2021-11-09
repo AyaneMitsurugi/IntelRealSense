@@ -9,11 +9,11 @@ CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionBias.c
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionBias.h
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionTypes.h
-CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o
- /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.cpp
+CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o
+ /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.c
  /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
-CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o
- /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.cpp
+CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o
+ /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.c
  /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
 CMakeFiles/IntelRealSense.dir/src/main.cpp.o
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/Fusion.h

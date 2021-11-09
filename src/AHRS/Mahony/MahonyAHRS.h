@@ -1,66 +1,34 @@
-//=============================================================================================
-// MahonyAHRS.h
-//=============================================================================================
-//
-// Madgwick's implementation of Mayhony's AHRS algorithm.
-// See: http://www.x-io.co.uk/open-source-imu-and-ahrs-algorithms/
-//
-// Date			Author			Notes
-// 29/09/2011	SOH Madgwick    Initial release
-// 02/10/2011	SOH Madgwick	Optimised for reduced CPU load
-//
-//=============================================================================================
-#ifndef MahonyAHRS_h
-#define MahonyAHRS_h
-#include <math.h>
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : IMU_Mahony.h
+  * @brief          : Header for IMU_Mahony.c file.
+  *                   This file contains the common defines of the application.
+  ******************************************************************************
+  * @description
+  *
+  * Header of the file with implementation of Mahony Algorithm.
+  * Link: https://github.com/PaulStoffregen/MahonyAHRS
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
 
-//--------------------------------------------------------------------------------------------
-// Variable declaration
+/* Define to prevent recursive inclusion -------------------------------------*/
+#ifndef IMU_MAHONY_H_
+#define IMU_MAHONY_H_
 
-class Mahony {
-private:
-	float twoKp;		// 2 * proportional gain (Kp)
-	float twoKi;		// 2 * integral gain (Ki)
-	float q0, q1, q2, q3;	// quaternion of sensor frame relative to auxiliary frame
-	float integralFBx, integralFBy, integralFBz;  // integral error terms scaled by Ki
-	float invSampleFreq;
-	float roll, pitch, yaw;
-	char anglesComputed;
-	static float invSqrt(float x);
-	void computeAngles();
+/* Includes ------------------------------------------------------------------*/
+/* Private defines -----------------------------------------------------------*/
+#define TWO_KP  (2.0f * 0.5f)  // 2 * proportional gain (Kp)
+#define TWO_KI  (2.0f * 0.0f)  // 2 * integral gain (Ki)
 
-//-------------------------------------------------------------------------------------------
-// Function declarations
+/* Functions prototypes ------------------------------------------------------*/
+void MahonyPrintfIntegralErrorTerms(void);
 
-public:
-	Mahony();
-	void begin(float sampleFrequency) { invSampleFreq = 1.0f / sampleFrequency; }
-	void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);
-	void updateIMU(float gx, float gy, float gz, float ax, float ay, float az);
-	float getRoll() {
-		if (!anglesComputed) computeAngles();
-		return roll * 57.29578f;
-	}
-	float getPitch() {
-		if (!anglesComputed) computeAngles();
-		return pitch * 57.29578f;
-	}
-	float getYaw() {
-		if (!anglesComputed) computeAngles();
-		return yaw * 57.29578f + 180.0f;
-	}
-	float getRollRadians() {
-		if (!anglesComputed) computeAngles();
-		return roll;
-	}
-	float getPitchRadians() {
-		if (!anglesComputed) computeAngles();
-		return pitch;
-	}
-	float getYawRadians() {
-		if (!anglesComputed) computeAngles();
-		return yaw;
-	}
-};
+void MahonyGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, float inv_sample_freq, float are_angles_computed);
+void MahonyGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float ay, float az, float inv_sample_freq, float are_angles_computed);
 
-#endif
+#endif /* IMU_MAHONY_H_ */
+
+/*****************************END OF FILE*****************************/

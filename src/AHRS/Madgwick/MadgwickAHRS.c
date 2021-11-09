@@ -17,14 +17,14 @@
 #define IMU_MADGWICK_C_
 
 /* Includes ------------------------------------------------------------------*/
-#include "IMU_Madgwick.h"
-#include "IMU_algorithms_main.h"
+#include <math.h>
+#include "MadgwickAHRS.h"
 
 /* Private variables ---------------------------------------------------------*/
 volatile float beta = BETA;  // 2 * proportional gain (Kp)
 
 /* Private function implementation  ------------------------------------------*/
-void MadgwickGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
+void MadgwickGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, float inv_sample_freq, float are_angles_computed) {
 	float normalization;
 	float qDot1, qDot2, qDot3, qDot4;
     float q0q0, q0q1, q0q2, q0q3, q1q1, q1q2, q1q3, q2q2, q2q3, q3q3;
@@ -37,7 +37,7 @@ void MadgwickGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, fl
 
 	// Use algorithm without magnetometer when its measurement are invalid (avoids NaN in magnetometer normalisation)
 	if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
-		MadgwickGyroscopeAccelerometer(gx, gy, gz, ax, ay, az);
+		MadgwickGyroscopeAccelerometer(gx, gy, gz, ax, ay, az, inv_sample_freq, are_angles_computed);
 		return;
 	}
 
@@ -121,10 +121,10 @@ void MadgwickGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, fl
 	}  // END OF: if(!((ax == 0.0f) && (ay == 0.0f) && (az == 0.0f)))
 
 	// Integrate rate of change of quaternions
-	q0 += qDot1 * INV_SAMPLE_FREQ;
-	q1 += qDot2 * INV_SAMPLE_FREQ;
-	q2 += qDot3 * INV_SAMPLE_FREQ;
-	q3 += qDot4 * INV_SAMPLE_FREQ;
+	q0 += qDot1 * inv_sample_freq;
+	q1 += qDot2 * inv_sample_freq;
+	q2 += qDot3 * inv_sample_freq;
+	q3 += qDot4 * inv_sample_freq;
 
 	// Normalise quaternions
 	normalization = fastInvSqrt(q0*q0 + q1*q1 + q2*q2 + q3*q3);
@@ -133,10 +133,10 @@ void MadgwickGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, fl
 	q2           *= normalization;
 	q3           *= normalization;
 
-	areAnglesComputed = 0;
+	are_angles_computed = 0;
 }
 
-void MadgwickGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float ay, float az) {
+void MadgwickGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float ay, float az, float inv_sample_freq, float are_angles_computed) {
 	float normalization;
 	float qDot1, qDot2, qDot3, qDot4;
 	float q0q0, q1q1, q2q2, q3q3;
@@ -204,10 +204,10 @@ void MadgwickGyroscopeAccelerometer(float gx, float gy, float gz, float ax, floa
 		}  // END OF: if(!((ax == 0.0f) && (ay == 0.0f) && (az == 0.0f)))
 
 		// Integrate rate of change of quaternions
-		q0 += qDot1 * INV_SAMPLE_FREQ;
-		q1 += qDot2 * INV_SAMPLE_FREQ;
-		q2 += qDot3 * INV_SAMPLE_FREQ;
-		q3 += qDot4 * INV_SAMPLE_FREQ;
+		q0 += qDot1 * inv_sample_freq;
+		q1 += qDot2 * inv_sample_freq;
+		q2 += qDot3 * inv_sample_freq;
+		q3 += qDot4 * inv_sample_freq;
 
 		// Normalise quaternions
 		normalization = fastInvSqrt(q0*q0 + q1*q1 + q2*q2 + q3*q3);
@@ -216,7 +216,7 @@ void MadgwickGyroscopeAccelerometer(float gx, float gy, float gz, float ax, floa
 		q2           *= normalization;
 		q3           *= normalization;
 
-		areAnglesComputed = 0;
+		are_angles_computed = 0;
 }
 
 #endif /* IMU_MADGWICK_C_ */

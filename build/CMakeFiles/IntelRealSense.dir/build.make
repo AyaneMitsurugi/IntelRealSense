@@ -129,52 +129,52 @@ CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o.provides: CMakeFile
 CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o.provides.build: CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o
 
 
-CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o: CMakeFiles/IntelRealSense.dir/flags.make
-CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o: ../src/AHRS/Madgwick/MadgwickAHRS.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nano/Monika/IntelRealSense/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o -c /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.cpp
+CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o: CMakeFiles/IntelRealSense.dir/flags.make
+CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o: ../src/AHRS/Madgwick/MadgwickAHRS.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nano/Monika/IntelRealSense/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o   -c /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.c
 
-CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.cpp > CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.i
+CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.c > CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.i
 
-CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.cpp -o CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.s
+CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.c -o CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.s
 
-CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o.requires:
+CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o.requires:
 
-.PHONY : CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o.requires
+.PHONY : CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o.requires
 
-CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o.provides: CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o.requires
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o.provides.build
-.PHONY : CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o.provides
+CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o.provides: CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o.requires
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o.provides.build
+.PHONY : CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o.provides
 
-CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o.provides.build: CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o
+CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o.provides.build: CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o
 
 
-CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o: CMakeFiles/IntelRealSense.dir/flags.make
-CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o: ../src/AHRS/Mahony/MahonyAHRS.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nano/Monika/IntelRealSense/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o -c /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.cpp
+CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o: CMakeFiles/IntelRealSense.dir/flags.make
+CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o: ../src/AHRS/Mahony/MahonyAHRS.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nano/Monika/IntelRealSense/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o   -c /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.c
 
-CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.cpp > CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.i
+CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.c > CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.i
 
-CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.cpp -o CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.s
+CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.c -o CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.s
 
-CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o.requires:
+CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o.requires:
 
-.PHONY : CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o.requires
+.PHONY : CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o.requires
 
-CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o.provides: CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o.requires
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o.provides.build
-.PHONY : CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o.provides
+CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o.provides: CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o.requires
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o.provides.build
+.PHONY : CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o.provides
 
-CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o.provides.build: CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o
+CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o.provides.build: CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o
 
 
 # Object files for target IntelRealSense
@@ -182,8 +182,8 @@ IntelRealSense_OBJECTS = \
 "CMakeFiles/IntelRealSense.dir/src/main.cpp.o" \
 "CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionAhrs.c.o" \
 "CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o" \
-"CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o" \
-"CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o"
+"CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o" \
+"CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o"
 
 # External object files for target IntelRealSense
 IntelRealSense_EXTERNAL_OBJECTS =
@@ -191,8 +191,8 @@ IntelRealSense_EXTERNAL_OBJECTS =
 IntelRealSense: CMakeFiles/IntelRealSense.dir/src/main.cpp.o
 IntelRealSense: CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionAhrs.c.o
 IntelRealSense: CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o
-IntelRealSense: CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o
-IntelRealSense: CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o
+IntelRealSense: CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o
+IntelRealSense: CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o
 IntelRealSense: CMakeFiles/IntelRealSense.dir/build.make
 IntelRealSense: /usr/lib/aarch64-linux-gnu/librealsense2.so.2.48.0
 IntelRealSense: CMakeFiles/IntelRealSense.dir/link.txt
@@ -207,8 +207,8 @@ CMakeFiles/IntelRealSense.dir/build: IntelRealSense
 CMakeFiles/IntelRealSense.dir/requires: CMakeFiles/IntelRealSense.dir/src/main.cpp.o.requires
 CMakeFiles/IntelRealSense.dir/requires: CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionAhrs.c.o.requires
 CMakeFiles/IntelRealSense.dir/requires: CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o.requires
-CMakeFiles/IntelRealSense.dir/requires: CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o.requires
-CMakeFiles/IntelRealSense.dir/requires: CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o.requires
+CMakeFiles/IntelRealSense.dir/requires: CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o.requires
+CMakeFiles/IntelRealSense.dir/requires: CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o.requires
 
 .PHONY : CMakeFiles/IntelRealSense.dir/requires
 

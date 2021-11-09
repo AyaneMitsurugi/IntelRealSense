@@ -16,8 +16,8 @@ add_executable(${PROJECT_NAME}
 		src/main.cpp
 		src/AHRS/Fusion/FusionAhrs.c
 		src/AHRS/Fusion/FusionBias.c
-                src/AHRS/Madgwick/MadgwickAHRS.cpp
-                src/AHRS/Mahony/MahonyAHRS.cpp)
+                src/AHRS/Madgwick/MadgwickAHRS.c
+                src/AHRS/Mahony/MahonyAHRS.c)
 
 # Link librealsense2 to the target
 target_link_libraries(${PROJECT_NAME} ${realsense2_LIBRARY})
