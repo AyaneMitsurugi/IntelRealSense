@@ -38,7 +38,7 @@ const std::string currentDateTime() {
     char      buffer [80];
     tstruct           = *localtime(&now);
 
-    strftime(buffer, sizeof(buffer), "../output_data/%Y-%m-%d.%X", &tstruct);
+    strftime(buffer, sizeof(buffer), "../output_data/%Y-%m-%d-%X", &tstruct);
 
     return buffer;
 };
