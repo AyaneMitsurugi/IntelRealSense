@@ -5,8 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/nano/Monika/IntelRealSense/src/AHRS/FusionAhrs.c" "/home/nano/Monika/IntelRealSense/build/CMakeFiles/IntelRealSense.dir/src/AHRS/FusionAhrs.c.o"
-  "/home/nano/Monika/IntelRealSense/src/AHRS/FusionBias.c" "/home/nano/Monika/IntelRealSense/build/CMakeFiles/IntelRealSense.dir/src/AHRS/FusionBias.c.o"
+  "/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionAhrs.c" "/home/nano/Monika/IntelRealSense/build/CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionAhrs.c.o"
+  "/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionBias.c" "/home/nano/Monika/IntelRealSense/build/CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -14,6 +14,8 @@ set(CMAKE_C_COMPILER_ID "GNU")
 set(CMAKE_C_TARGET_INCLUDE_PATH
   )
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.cpp" "/home/nano/Monika/IntelRealSense/build/CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o"
+  "/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.cpp" "/home/nano/Monika/IntelRealSense/build/CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o"
   "/home/nano/Monika/IntelRealSense/src/main.cpp" "/home/nano/Monika/IntelRealSense/build/CMakeFiles/IntelRealSense.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

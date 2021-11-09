@@ -123,59 +123,113 @@ IntelRealSense/fast:
 	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/build
 .PHONY : IntelRealSense/fast
 
-src/AHRS/FusionAhrs.o: src/AHRS/FusionAhrs.c.o
+src/AHRS/Fusion/FusionAhrs.o: src/AHRS/Fusion/FusionAhrs.c.o
 
-.PHONY : src/AHRS/FusionAhrs.o
-
-# target to build an object file
-src/AHRS/FusionAhrs.c.o:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/FusionAhrs.c.o
-.PHONY : src/AHRS/FusionAhrs.c.o
-
-src/AHRS/FusionAhrs.i: src/AHRS/FusionAhrs.c.i
-
-.PHONY : src/AHRS/FusionAhrs.i
-
-# target to preprocess a source file
-src/AHRS/FusionAhrs.c.i:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/FusionAhrs.c.i
-.PHONY : src/AHRS/FusionAhrs.c.i
-
-src/AHRS/FusionAhrs.s: src/AHRS/FusionAhrs.c.s
-
-.PHONY : src/AHRS/FusionAhrs.s
-
-# target to generate assembly for a file
-src/AHRS/FusionAhrs.c.s:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/FusionAhrs.c.s
-.PHONY : src/AHRS/FusionAhrs.c.s
-
-src/AHRS/FusionBias.o: src/AHRS/FusionBias.c.o
-
-.PHONY : src/AHRS/FusionBias.o
+.PHONY : src/AHRS/Fusion/FusionAhrs.o
 
 # target to build an object file
-src/AHRS/FusionBias.c.o:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/FusionBias.c.o
-.PHONY : src/AHRS/FusionBias.c.o
+src/AHRS/Fusion/FusionAhrs.c.o:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionAhrs.c.o
+.PHONY : src/AHRS/Fusion/FusionAhrs.c.o
 
-src/AHRS/FusionBias.i: src/AHRS/FusionBias.c.i
+src/AHRS/Fusion/FusionAhrs.i: src/AHRS/Fusion/FusionAhrs.c.i
 
-.PHONY : src/AHRS/FusionBias.i
+.PHONY : src/AHRS/Fusion/FusionAhrs.i
 
 # target to preprocess a source file
-src/AHRS/FusionBias.c.i:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/FusionBias.c.i
-.PHONY : src/AHRS/FusionBias.c.i
+src/AHRS/Fusion/FusionAhrs.c.i:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionAhrs.c.i
+.PHONY : src/AHRS/Fusion/FusionAhrs.c.i
 
-src/AHRS/FusionBias.s: src/AHRS/FusionBias.c.s
+src/AHRS/Fusion/FusionAhrs.s: src/AHRS/Fusion/FusionAhrs.c.s
 
-.PHONY : src/AHRS/FusionBias.s
+.PHONY : src/AHRS/Fusion/FusionAhrs.s
 
 # target to generate assembly for a file
-src/AHRS/FusionBias.c.s:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/FusionBias.c.s
-.PHONY : src/AHRS/FusionBias.c.s
+src/AHRS/Fusion/FusionAhrs.c.s:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionAhrs.c.s
+.PHONY : src/AHRS/Fusion/FusionAhrs.c.s
+
+src/AHRS/Fusion/FusionBias.o: src/AHRS/Fusion/FusionBias.c.o
+
+.PHONY : src/AHRS/Fusion/FusionBias.o
+
+# target to build an object file
+src/AHRS/Fusion/FusionBias.c.o:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o
+.PHONY : src/AHRS/Fusion/FusionBias.c.o
+
+src/AHRS/Fusion/FusionBias.i: src/AHRS/Fusion/FusionBias.c.i
+
+.PHONY : src/AHRS/Fusion/FusionBias.i
+
+# target to preprocess a source file
+src/AHRS/Fusion/FusionBias.c.i:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.i
+.PHONY : src/AHRS/Fusion/FusionBias.c.i
+
+src/AHRS/Fusion/FusionBias.s: src/AHRS/Fusion/FusionBias.c.s
+
+.PHONY : src/AHRS/Fusion/FusionBias.s
+
+# target to generate assembly for a file
+src/AHRS/Fusion/FusionBias.c.s:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.s
+.PHONY : src/AHRS/Fusion/FusionBias.c.s
+
+src/AHRS/Madgwick/MadgwickAHRS.o: src/AHRS/Madgwick/MadgwickAHRS.cpp.o
+
+.PHONY : src/AHRS/Madgwick/MadgwickAHRS.o
+
+# target to build an object file
+src/AHRS/Madgwick/MadgwickAHRS.cpp.o:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o
+.PHONY : src/AHRS/Madgwick/MadgwickAHRS.cpp.o
+
+src/AHRS/Madgwick/MadgwickAHRS.i: src/AHRS/Madgwick/MadgwickAHRS.cpp.i
+
+.PHONY : src/AHRS/Madgwick/MadgwickAHRS.i
+
+# target to preprocess a source file
+src/AHRS/Madgwick/MadgwickAHRS.cpp.i:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.i
+.PHONY : src/AHRS/Madgwick/MadgwickAHRS.cpp.i
+
+src/AHRS/Madgwick/MadgwickAHRS.s: src/AHRS/Madgwick/MadgwickAHRS.cpp.s
+
+.PHONY : src/AHRS/Madgwick/MadgwickAHRS.s
+
+# target to generate assembly for a file
+src/AHRS/Madgwick/MadgwickAHRS.cpp.s:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.s
+.PHONY : src/AHRS/Madgwick/MadgwickAHRS.cpp.s
+
+src/AHRS/Mahony/MahonyAHRS.o: src/AHRS/Mahony/MahonyAHRS.cpp.o
+
+.PHONY : src/AHRS/Mahony/MahonyAHRS.o
+
+# target to build an object file
+src/AHRS/Mahony/MahonyAHRS.cpp.o:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o
+.PHONY : src/AHRS/Mahony/MahonyAHRS.cpp.o
+
+src/AHRS/Mahony/MahonyAHRS.i: src/AHRS/Mahony/MahonyAHRS.cpp.i
+
+.PHONY : src/AHRS/Mahony/MahonyAHRS.i
+
+# target to preprocess a source file
+src/AHRS/Mahony/MahonyAHRS.cpp.i:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.i
+.PHONY : src/AHRS/Mahony/MahonyAHRS.cpp.i
+
+src/AHRS/Mahony/MahonyAHRS.s: src/AHRS/Mahony/MahonyAHRS.cpp.s
+
+.PHONY : src/AHRS/Mahony/MahonyAHRS.s
+
+# target to generate assembly for a file
+src/AHRS/Mahony/MahonyAHRS.cpp.s:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.s
+.PHONY : src/AHRS/Mahony/MahonyAHRS.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -213,12 +267,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... IntelRealSense"
 	@echo "... edit_cache"
-	@echo "... src/AHRS/FusionAhrs.o"
-	@echo "... src/AHRS/FusionAhrs.i"
-	@echo "... src/AHRS/FusionAhrs.s"
-	@echo "... src/AHRS/FusionBias.o"
-	@echo "... src/AHRS/FusionBias.i"
-	@echo "... src/AHRS/FusionBias.s"
+	@echo "... src/AHRS/Fusion/FusionAhrs.o"
+	@echo "... src/AHRS/Fusion/FusionAhrs.i"
+	@echo "... src/AHRS/Fusion/FusionAhrs.s"
+	@echo "... src/AHRS/Fusion/FusionBias.o"
+	@echo "... src/AHRS/Fusion/FusionBias.i"
+	@echo "... src/AHRS/Fusion/FusionBias.s"
+	@echo "... src/AHRS/Madgwick/MadgwickAHRS.o"
+	@echo "... src/AHRS/Madgwick/MadgwickAHRS.i"
+	@echo "... src/AHRS/Madgwick/MadgwickAHRS.s"
+	@echo "... src/AHRS/Mahony/MahonyAHRS.o"
+	@echo "... src/AHRS/Mahony/MahonyAHRS.i"
+	@echo "... src/AHRS/Mahony/MahonyAHRS.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

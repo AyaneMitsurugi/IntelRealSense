@@ -1,23 +1,25 @@
-// License: Apache 2.0. See LICENSE file in root directory.
-// Copyright(c) 2019 Intel Corporation. All Rights Reserved.
-#include <librealsense2/rs.hpp>
+/* INCLUDES */
 #include <iostream>
 #include <fstream>
 #include <iomanip>
 #include <stdio.h>
 #include <time.h>
+#include <librealsense2/rs.hpp>
 #include "IntelRealSenseDemo/example-utils.hpp"
-#include "AHRS/Fusion.h"
-#include "AHRS/FusionAhrs.h"
-#include "AHRS/FusionBias.h"
-#include "AHRS/FusionCalibration.h"
-#include "AHRS/FusionTypes.h"
+#include "AHRS/Fusion/Fusion.h"
+#include "AHRS/Fusion/FusionAhrs.h"
+#include "AHRS/Fusion/FusionBias.h"
+#include "AHRS/Fusion/FusionCalibration.h"
+#include "AHRS/Fusion/FusionTypes.h"
+#include "AHRS/Madgwick/MadgwickAHRS.h"
+#include "AHRS/Mahony/MahonyAHRS.h"
 
+float precision    = 6.0;
+
+/* AHRS Fusion-related parameters */
+float samplePeriod = RS2_TIMESTAMP_DOMAIN_GLOBAL_TIME;
 FusionBias fusionBias;
 FusionAhrs fusionAhrs;
-
-float samplePeriod = RS2_TIMESTAMP_DOMAIN_GLOBAL_TIME;
-float precision    = 6.0;
 
 FusionVector3 gyroscopeSensitivity = {
     gyroscopeSensitivity.axis.x = 2000.0f,
@@ -31,7 +33,12 @@ FusionVector3 accelerometerSensitivity = {
     accelerometerSensitivity.axis.z = 16.0f,
 }; // replace these values with actual sensitivity in g per lsb as specified in accelerometer datasheet
 
-// Get current date-time in YYYY-MM-DD.HH:mm:ss format
+/* AHRS Madgwick-related parameters */
+
+/* AHRS Mahony-related parameters */
+
+/* FUNCTIONS */
+/* Return buffer of current date and time in YYYY-MM-DD-HH:mm:ss format */
 const std::string currentDateTime() {
     time_t    now     = time(0);
     struct tm tstruct;
@@ -43,21 +50,23 @@ const std::string currentDateTime() {
     return buffer;
 };
 
+/* MAIN */
 int main()
 {
+    /* Variables */
     int index = 1;
 
     std::string buffer = currentDateTime();
-
     std::ofstream outfile;
     outfile.open (buffer);
 
     try {
+        // TODO
         std::string serial;
-        if (!device_with_streams({ RS2_STREAM_POSE}, serial))
+        if (!device_with_streams({RS2_STREAM_POSE}, serial))
             return EXIT_SUCCESS;
 
-        // Declare RealSense pipeline, encapsulating the actual device and sensors
+        // Create RealSense pipeline (encapsulating the actual device and sensors)
         rs2::pipeline pipe;
 
         // Create a configuration for configuring the pipeline with a non default profile
@@ -137,7 +146,7 @@ int main()
         } // END OF: while (true)
         outfile.close();
         return EXIT_SUCCESS;
-    }
+    } // END OF: try
     catch (const rs2::error & e)
     {
         std::cerr << "RealSense error calling " << e.get_failed_function() << "(" << e.get_failed_args() << "):\n    " << e.what() << std::endl;
@@ -147,5 +156,5 @@ int main()
     {
         std::cerr << e.what() << std::endl;
         return EXIT_FAILURE;
-    }
-}
+    } // END OF: try-catch
+} // END OF: main()

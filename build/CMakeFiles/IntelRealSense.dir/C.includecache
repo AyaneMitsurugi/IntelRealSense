@@ -6,33 +6,33 @@
 
 #IncludeRegexTransform: 
 
-/home/nano/Monika/IntelRealSense/src/AHRS/FusionAhrs.c
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionAhrs.c
 FusionAhrs.h
-/home/nano/Monika/IntelRealSense/src/AHRS/FusionAhrs.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionAhrs.h
 float.h
 -
 math.h
 -
 
-/home/nano/Monika/IntelRealSense/src/AHRS/FusionAhrs.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionAhrs.h
 FusionTypes.h
-/home/nano/Monika/IntelRealSense/src/AHRS/FusionTypes.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionTypes.h
 stdbool.h
 -
 
-/home/nano/Monika/IntelRealSense/src/AHRS/FusionBias.c
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionBias.c
 FusionBias.h
-/home/nano/Monika/IntelRealSense/src/AHRS/FusionBias.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionBias.h
 math.h
-/home/nano/Monika/IntelRealSense/src/AHRS/math.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/math.h
 
-/home/nano/Monika/IntelRealSense/src/AHRS/FusionBias.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionBias.h
 FusionTypes.h
-/home/nano/Monika/IntelRealSense/src/AHRS/FusionTypes.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionTypes.h
 stdbool.h
 -
 
-/home/nano/Monika/IntelRealSense/src/AHRS/FusionTypes.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionTypes.h
 math.h
 -
 stdint.h
