@@ -17,6 +17,7 @@ FusionBias fusionBias;
 FusionAhrs fusionAhrs;
 
 float samplePeriod = RS2_TIMESTAMP_DOMAIN_GLOBAL_TIME;
+float precision    = 6.0;
 
 FusionVector3 gyroscopeSensitivity = {
     gyroscopeSensitivity.axis.x = 2000.0f,
@@ -78,8 +79,8 @@ int main()
         if (outfile.is_open()) {
             outfile << "Translation X [m],Translation Y [m], Translation Z [m],";
             outfile << "Velocity X [m/s], Velocity Y [m/s], Velocity Z [m/s],";
-            outfile << "Angular acceleration X [rad/s^2],Angular acceleration Y [rad/s^2],Angular acceleration Z [rad/s^2]";
-            outfile << "Roll [degrees],Pitch[degrees],Yaw[degrees]," << std::endl;
+            outfile << "Angular acceleration X [rad/s^2],Angular acceleration Y [rad/s^2],Angular acceleration Z [rad/s^2],";
+            outfile << "Roll [degrees],Pitch[degrees],Yaw[degrees]" << std::endl;
         }
 
         /***** MAIN LOOP *****/
@@ -119,14 +120,14 @@ int main()
             // Save x, y, z values of the translation, velocity and angular acceleration
             // relative to initial position in the output file
             if (outfile.is_open()) {
-                outfile << std::setprecision(3) << std::fixed << pose_data.translation.x << "," << pose_data.translation.y << "," << pose_data.translation.z;
-	        outfile << std::setprecision(3) << std::fixed << pose_data.velocity.x << "," << pose_data.velocity.y << "," << pose_data.velocity.z;
-	        outfile << std::setprecision(3) << std::fixed << pose_data.angular_acceleration.x << "," << pose_data.angular_acceleration.y << "," << pose_data.angular_acceleration.z;
+                outfile << std::setprecision(precision) << std::fixed << pose_data.translation.x << "," << pose_data.translation.y << "," << pose_data.translation.z << ",";
+	        outfile << std::setprecision(precision) << std::fixed << pose_data.velocity.x << "," << pose_data.velocity.y << "," << pose_data.velocity.z << ",";
+	        outfile << std::setprecision(precision) << std::fixed << pose_data.angular_acceleration.x << "," << pose_data.angular_acceleration.y << "," << pose_data.angular_acceleration.z << ",";
             }
 	    // Save Euler angles in the output file
             FusionEulerAngles eulerAngles = FusionQuaternionToEulerAngles(FusionAhrsGetQuaternion(&fusionAhrs));
 	    if (outfile.is_open()) {
-            outfile << std::setprecision(3) << std::fixed << eulerAngles.angle.roll << "," << eulerAngles.angle.pitch << "," << eulerAngles.angle.yaw << std::endl;
+                outfile << std::setprecision(precision) << std::fixed << eulerAngles.angle.roll << "," << eulerAngles.angle.pitch << "," << eulerAngles.angle.yaw << std::endl;
             }
         }
         outfile.close();
