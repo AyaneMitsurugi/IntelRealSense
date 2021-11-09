@@ -45,6 +45,8 @@ const std::string currentDateTime() {
 
 int main()
 {
+    int index = 1;
+
     std::string buffer = currentDateTime();
 
     std::ofstream outfile;
@@ -77,6 +79,7 @@ int main()
 
         // Save headers in the output file
         if (outfile.is_open()) {
+            outfile << "Index,";
             outfile << "Translation X [m],Translation Y [m], Translation Z [m],";
             outfile << "Velocity X [m/s], Velocity Y [m/s], Velocity Z [m/s],";
             outfile << "Angular acceleration X [rad/s^2],Angular acceleration Y [rad/s^2],Angular acceleration Z [rad/s^2],";
@@ -120,6 +123,7 @@ int main()
             // Save x, y, z values of the translation, velocity and angular acceleration
             // relative to initial position in the output file
             if (outfile.is_open()) {
+                outfile << index << ",";
                 outfile << std::setprecision(precision) << std::fixed << pose_data.translation.x << "," << pose_data.translation.y << "," << pose_data.translation.z << ",";
 	        outfile << std::setprecision(precision) << std::fixed << pose_data.velocity.x << "," << pose_data.velocity.y << "," << pose_data.velocity.z << ",";
 	        outfile << std::setprecision(precision) << std::fixed << pose_data.angular_acceleration.x << "," << pose_data.angular_acceleration.y << "," << pose_data.angular_acceleration.z << ",";
@@ -129,7 +133,8 @@ int main()
 	    if (outfile.is_open()) {
                 outfile << std::setprecision(precision) << std::fixed << eulerAngles.angle.roll << "," << eulerAngles.angle.pitch << "," << eulerAngles.angle.yaw << std::endl;
             }
-        }
+            index++;
+        } // END OF: while (true)
         outfile.close();
         return EXIT_SUCCESS;
     }
