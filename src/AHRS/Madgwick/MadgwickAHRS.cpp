@@ -45,7 +45,7 @@ Madgwick::Madgwick() {
 	anglesComputed = 0;
 }
 
-void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
+void Madgwick::MadgwickUpdate(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
 	float recipNorm;
 	float s0, s1, s2, s3;
 	float qDot1, qDot2, qDot3, qDot4;
@@ -150,7 +150,7 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 //-------------------------------------------------------------------------------------------
 // IMU algorithm update
 
-void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az) {
+void Madgwick::MadgwickUpdateIMU(float gx, float gy, float gz, float ax, float ay, float az) {
 	float recipNorm;
 	float s0, s1, s2, s3;
 	float qDot1, qDot2, qDot3, qDot4;
@@ -241,7 +241,7 @@ float Madgwick::invSqrt(float x) {
 
 //-------------------------------------------------------------------------------------------
 
-void Madgwick::computeAngles()
+void Madgwick::MadgwickComputeAngles()
 {
 	roll = atan2f(q0*q1 + q2*q3, 0.5f - q1*q1 - q2*q2);
 	pitch = asinf(-2.0f * (q1*q3 - q0*q2));
