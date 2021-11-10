@@ -1,29 +1,17 @@
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : IMU_Madgwick.c
-  * @brief          : Implementation of Madgwick Algorithm.
-  ******************************************************************************
-  * @description
-  *
-  * Link: https://github.com/PaulStoffregen/MadgwickAHRS
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
+/* https://github.com/PaulStoffregen/MadgwickAHRS */
 
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef IMU_MADGWICK_C_
-#define IMU_MADGWICK_C_
+/* DEFINES */
+#ifndef _MADGWICK_AHRS_C_
+#define _MADGWICK_AHRS_C_
 
-/* Includes ------------------------------------------------------------------*/
+/* INCLUDES */
 #include <math.h>
 #include "MadgwickAHRS.h"
 
-/* Private variables ---------------------------------------------------------*/
-volatile float beta = BETA;  // 2 * proportional gain (Kp)
+/* VARIABLES */
+volatile float beta = BETA; // 2 * proportional gain (Kp)
 
-/* Private function implementation  ------------------------------------------*/
+/* FUNCTIONS */
 void MadgwickGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, float inv_sample_freq, float are_angles_computed) {
 	float normalization;
 	float qDot1, qDot2, qDot3, qDot4;
@@ -219,6 +207,5 @@ void MadgwickGyroscopeAccelerometer(float gx, float gy, float gz, float ax, floa
 		are_angles_computed = 0;
 }
 
-#endif /* IMU_MADGWICK_C_ */
+#endif /* _MADGWICK_AHRS_C_ */
 
-/*****************************END OF FILE*****************************/

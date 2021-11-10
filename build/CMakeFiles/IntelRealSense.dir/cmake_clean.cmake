@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o"
   "CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o"
   "CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o"
+  "CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o"
   "IntelRealSense.pdb"
   "IntelRealSense"
 )

@@ -14,6 +14,13 @@ CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o: ../src/AHRS/Ma
 
 CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o: ../src/AHRS/Mahony/MahonyAHRS.c
 CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o: ../src/AHRS/Mahony/MahonyAHRS.h
+CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o: ../src/main_Madgwick_Mahony.h
+
+CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o: ../src/AHRS/Madgwick/MadgwickAHRS.h
+CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o: ../src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp
+CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o: ../src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.h
+CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o: ../src/AHRS/Mahony/MahonyAHRS.h
+CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o: ../src/main_Madgwick_Mahony.h
 
 CMakeFiles/IntelRealSense.dir/src/main.cpp.o: ../src/AHRS/Fusion/Fusion.h
 CMakeFiles/IntelRealSense.dir/src/main.cpp.o: ../src/AHRS/Fusion/FusionAhrs.h
@@ -24,4 +31,6 @@ CMakeFiles/IntelRealSense.dir/src/main.cpp.o: ../src/AHRS/Madgwick/MadgwickAHRS.
 CMakeFiles/IntelRealSense.dir/src/main.cpp.o: ../src/AHRS/Mahony/MahonyAHRS.h
 CMakeFiles/IntelRealSense.dir/src/main.cpp.o: ../src/IntelRealSenseDemo/example-utils.hpp
 CMakeFiles/IntelRealSense.dir/src/main.cpp.o: ../src/main.cpp
+CMakeFiles/IntelRealSense.dir/src/main.cpp.o: ../src/main.h
+CMakeFiles/IntelRealSense.dir/src/main.cpp.o: ../src/main_Madgwick_Mahony.h
 

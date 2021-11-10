@@ -15,6 +15,13 @@ CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o
 CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o
  /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.c
  /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
+ /home/nano/Monika/IntelRealSense/src/main_Madgwick_Mahony.h
+CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o
+ /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
+ /home/nano/Monika/IntelRealSense/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp
+ /home/nano/Monika/IntelRealSense/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.h
+ /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
+ /home/nano/Monika/IntelRealSense/src/main_Madgwick_Mahony.h
 CMakeFiles/IntelRealSense.dir/src/main.cpp.o
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/Fusion.h
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionAhrs.h
@@ -25,3 +32,5 @@ CMakeFiles/IntelRealSense.dir/src/main.cpp.o
  /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
  /home/nano/Monika/IntelRealSense/src/IntelRealSenseDemo/example-utils.hpp
  /home/nano/Monika/IntelRealSense/src/main.cpp
+ /home/nano/Monika/IntelRealSense/src/main.h
+ /home/nano/Monika/IntelRealSense/src/main_Madgwick_Mahony.h

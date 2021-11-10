@@ -40,7 +40,25 @@ stdint.h
 
 /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
 
+/home/nano/Monika/IntelRealSense/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp
+math.h
+-
+MadgwickMahonyCommonAHRS.h
+/home/nano/Monika/IntelRealSense/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.h
+../Madgwick/MadgwickAHRS.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
+../Mahony/MahonyAHRS.h
 /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
+
+/home/nano/Monika/IntelRealSense/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.h
+stdio.h
+-
+../../main_Madgwick_Mahony.h
+/home/nano/Monika/IntelRealSense/src/main_Madgwick_Mahony.h
+
+/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
+../../main_Madgwick_Mahony.h
+/home/nano/Monika/IntelRealSense/src/main_Madgwick_Mahony.h
 
 /home/nano/Monika/IntelRealSense/src/IntelRealSenseDemo/example-utils.hpp
 iostream
@@ -65,6 +83,42 @@ stdio.h
 -
 time.h
 -
+math.h
+-
+librealsense2/rs.hpp
+-
+IntelRealSenseDemo/example-utils.hpp
+/home/nano/Monika/IntelRealSense/src/IntelRealSenseDemo/example-utils.hpp
+main.h
+/home/nano/Monika/IntelRealSense/src/main.h
+AHRS/Fusion/Fusion.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/Fusion.h
+AHRS/Fusion/FusionAhrs.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionAhrs.h
+AHRS/Fusion/FusionBias.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionBias.h
+AHRS/Fusion/FusionCalibration.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionCalibration.h
+AHRS/Fusion/FusionTypes.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionTypes.h
+AHRS/Madgwick/MadgwickAHRS.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
+AHRS/Mahony/MahonyAHRS.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
+
+/home/nano/Monika/IntelRealSense/src/main.h
+iostream
+-
+fstream
+-
+iomanip
+-
+stdio.h
+-
+time.h
+-
+math.h
+-
 librealsense2/rs.hpp
 -
 IntelRealSenseDemo/example-utils.hpp
@@ -83,4 +137,8 @@ AHRS/Madgwick/MadgwickAHRS.h
 /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
 AHRS/Mahony/MahonyAHRS.h
 /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
+
+/home/nano/Monika/IntelRealSense/src/main_Madgwick_Mahony.h
+librealsense2/rs.hpp
+-
 

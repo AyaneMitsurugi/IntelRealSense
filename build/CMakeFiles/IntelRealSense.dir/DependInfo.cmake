@@ -16,6 +16,7 @@ set(CMAKE_C_COMPILER_ID "GNU")
 set(CMAKE_C_TARGET_INCLUDE_PATH
   )
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/nano/Monika/IntelRealSense/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp" "/home/nano/Monika/IntelRealSense/build/CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o"
   "/home/nano/Monika/IntelRealSense/src/main.cpp" "/home/nano/Monika/IntelRealSense/build/CMakeFiles/IntelRealSense.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

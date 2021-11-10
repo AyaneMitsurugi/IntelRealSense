@@ -204,6 +204,33 @@ src/AHRS/Madgwick/MadgwickAHRS.c.s:
 	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.s
 .PHONY : src/AHRS/Madgwick/MadgwickAHRS.c.s
 
+src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.o: src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o
+
+.PHONY : src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.o
+
+# target to build an object file
+src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o
+.PHONY : src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o
+
+src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.i: src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.i
+
+.PHONY : src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.i
+
+# target to preprocess a source file
+src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.i:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.i
+.PHONY : src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.i
+
+src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.s: src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.s
+
+.PHONY : src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.s
+
+# target to generate assembly for a file
+src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.s:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.s
+.PHONY : src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.s
+
 src/AHRS/Mahony/MahonyAHRS.o: src/AHRS/Mahony/MahonyAHRS.c.o
 
 .PHONY : src/AHRS/Mahony/MahonyAHRS.o
@@ -276,6 +303,9 @@ help:
 	@echo "... src/AHRS/Madgwick/MadgwickAHRS.o"
 	@echo "... src/AHRS/Madgwick/MadgwickAHRS.i"
 	@echo "... src/AHRS/Madgwick/MadgwickAHRS.s"
+	@echo "... src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.o"
+	@echo "... src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.i"
+	@echo "... src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.s"
 	@echo "... src/AHRS/Mahony/MahonyAHRS.o"
 	@echo "... src/AHRS/Mahony/MahonyAHRS.i"
 	@echo "... src/AHRS/Mahony/MahonyAHRS.s"

@@ -1,28 +1,18 @@
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : IMU_Mahony.c
-  * @brief          : Implementation of Mahony Algorithm.
-  ******************************************************************************
-  * @description
-  *
-  * Link: https://github.com/PaulStoffregen/MahonyAHRS
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
+/* https://github.com/PaulStoffregen/MahonyAHRS */
 
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef IMU_MAHONY_C_
-#define IMU_MAHONY_C_
+/* DEFINES */
+#ifndef _MAHONY_AHRS_C
+#define _MAHONY_AHRS_C
 
-/* Includes ------------------------------------------------------------------*/
+/* INCLUDES */
 #include "MahonyAHRS.h"
+#include "../../main_Madgwick_Mahony.h"
 #include <stdio.h>
+#include <math.h>
 
-/* Private variables ---------------------------------------------------------*/
-float twoKp = TWO_KP;  // 2 * proportional gain (Kp)
-float twoKi = TWO_KI;  // 2 * integral gain (Ki)
+/* VARIABLES*/
+float twoKp = TWO_KP; // 2 * proportional gain (Kp)
+float twoKi = TWO_KI; // 2 * integral gain (Ki)
 
 // Integral error terms scaled by integral gain (Ki):
 float integralFBx = 0.0f;
@@ -35,12 +25,10 @@ float q1 = 0.0;
 float q2 = 0.0;
 float q3 = 0.0;
 
-/* Private function implementation  ------------------------------------------*/
-
-
+/* FUNCTIONS */
 void MahonyPrintfIntegralErrorTerms(void) {
 	printf("Integral error terms scaled by integral gain (Ki):\n");
-	printf("FBx = %d, FBy = %d, FBz = %d", integralFBx, integralFBy, integralFBz);
+	printf("FBx = %f, FBy = %f, FBz = %f", integralFBx, integralFBy, integralFBz);
 }
 
 void MahonyGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, float inv_sample_freq, float are_angles_computed) {
@@ -228,6 +216,5 @@ void MahonyGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float 
 	are_angles_computed = 0;
 }
 
-#endif /* IMU_MAHONY_C_ */
+#endif /* _MAHONY_AHRS_C */
 
-/*****************************END OF FILE*****************************/
