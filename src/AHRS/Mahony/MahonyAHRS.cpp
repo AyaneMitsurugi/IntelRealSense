@@ -1,16 +1,13 @@
 /* https://github.com/PaulStoffregen/MahonyAHRS */
 
 /* DEFINES */
-#ifndef _MAHONY_AHRS_C
-#define _MAHONY_AHRS_C
+#ifndef _MAHONY_AHRS_C_
+#define _MAHONY_AHRS_C_
 
-/* INCLUDES */
-#include "MahonyAHRS.h"
-#include "../../main_Madgwick_Mahony.h"
-#include <stdio.h>
-#include <math.h>
+/* INCLUDES*/
+#include "MahonyAHRS.hpp"
 
-/* VARIABLES*/
+/* VARIABLES */
 float twoKp = TWO_KP; // 2 * proportional gain (Kp)
 float twoKi = TWO_KI; // 2 * integral gain (Ki)
 
@@ -19,19 +16,13 @@ float integralFBx = 0.0f;
 float integralFBy = 0.0f;
 float integralFBz = 0.0f;
 
-// Quaternions of sensor frame relative to auxiliary
-float q0 = 1.0;
-float q1 = 0.0;
-float q2 = 0.0;
-float q3 = 0.0;
-
 /* FUNCTIONS */
 void MahonyPrintfIntegralErrorTerms(void) {
 	printf("Integral error terms scaled by integral gain (Ki):\n");
 	printf("FBx = %f, FBy = %f, FBz = %f", integralFBx, integralFBy, integralFBz);
 }
 
-void MahonyGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, float inv_sample_freq, float are_angles_computed) {
+void MahonyGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
 	float normalization;
     float q0q0, q0q1, q0q2, q0q3, q1q1, q1q2, q1q3, q2q2, q2q3, q3q3;
 	float hx, hy, bx, bz;
@@ -41,7 +32,7 @@ void MahonyGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, floa
 
 	// Use algorithm without magnetometer when its measurement are invalid (avoids NaN in magnetometer normalisation)
 	if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
-		MahonyGyroscopeAccelerometer(gx, gy, gz, ax, ay, az, inv_sample_freq, are_angles_computed);
+		MahonyGyroscopeAccelerometer(gx, gy, gz, ax, ay, az);
 		return;
 	}
 
@@ -141,7 +132,7 @@ void MahonyGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, floa
 	are_angles_computed = 0;
 }
 
-void MahonyGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float ay, float az, float inv_sample_freq, float are_angles_computed) {
+void MahonyGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float ay, float az) {
 	float normalization;
 	float halfvx, halfvy, halfvz;
 	float halfex, halfey, halfez;
@@ -216,5 +207,4 @@ void MahonyGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float 
 	are_angles_computed = 0;
 }
 
-#endif /* _MAHONY_AHRS_C */
-
+#endif /* _MAHONY_AHRS_C_ */

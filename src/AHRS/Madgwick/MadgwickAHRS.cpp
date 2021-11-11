@@ -1,38 +1,37 @@
-/* https://github.com/PaulStoffregen/MadgwickAHRS */
+/* Link: https://github.com/PaulStoffregen/MadgwickAHRS */
 
 /* DEFINES */
 #ifndef _MADGWICK_AHRS_C_
 #define _MADGWICK_AHRS_C_
 
 /* INCLUDES */
-#include <math.h>
-#include "MadgwickAHRS.h"
+#include "MadgwickAHRS.hpp"
 
 /* VARIABLES */
-volatile float beta = BETA; // 2 * proportional gain (Kp)
+float beta = BETA; // 2 * proportional gain (Kp)
 
-/* FUNCTIONS */
-void MadgwickGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, float inv_sample_freq, float are_angles_computed) {
-	float normalization;
-	float qDot1, qDot2, qDot3, qDot4;
+/* FUNTIONS */
+void MadgwickGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
+    float normalization;
+    float qDot1, qDot2, qDot3, qDot4;
     float q0q0, q0q1, q0q2, q0q3, q1q1, q1q2, q1q3, q2q2, q2q3, q3q3;
     float _2q0, _2q1, _2q2, _2q3;
-	float _2q0q2, _2q2q3;
+    float _2q0q2, _2q2q3;
     float _2q0mx, _2q0my, _2q0mz, _2q1mx;
     float _2bx, _2bz, _4bx, _4bz;
-	float hx, hy;
-	float s0, s1, s2, s3;
+    float hx, hy;
+    float s0, s1, s2, s3;
 
-	// Use algorithm without magnetometer when its measurement are invalid (avoids NaN in magnetometer normalisation)
-	if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
-		MadgwickGyroscopeAccelerometer(gx, gy, gz, ax, ay, az, inv_sample_freq, are_angles_computed);
-		return;
-	}
+    // Use algorithm without magnetometer when its measurement are invalid (avoids NaN in magnetometer normalisation)
+    if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
+        MadgwickGyroscopeAccelerometer(gx, gy, gz, ax, ay, az);
+	return;
+    }
 
-	/* Convert gyroscope degrees/sec to radians/sec
-	gx *= 0.0174533f;
-	gy *= 0.0174533f;
-	gz *= 0.0174533f;*/
+    /* Convert gyroscope degrees/sec to radians/sec
+    gx *= 0.0174533f;
+    gy *= 0.0174533f;
+    gz *= 0.0174533f;*/
 
 	// Rate of change of quaternions from gyroscope
 	qDot1 = 0.5f * (-q1*gx - q2*gy - q3*gz);
@@ -124,7 +123,7 @@ void MadgwickGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, fl
 	are_angles_computed = 0;
 }
 
-void MadgwickGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float ay, float az, float inv_sample_freq, float are_angles_computed) {
+void MadgwickGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float ay, float az) {
 	float normalization;
 	float qDot1, qDot2, qDot3, qDot4;
 	float q0q0, q1q1, q2q2, q3q3;
@@ -178,7 +177,7 @@ void MadgwickGyroscopeAccelerometer(float gx, float gy, float gz, float ax, floa
 		s3 = 4.0f * q1q1 * q3 - _2q1 * ax + 4.0f * q2q2 * q3 - _2q2 * ay;
 
 		// Normalise step magnitude
-	    normalization = invSqrt(s0*s0 + s1*s1 + s2*s2 + s3*s3);
+	    normalization = fastInvSqrt(s0*s0 + s1*s1 + s2*s2 + s3*s3);
 	    s0           *= normalization;
 	    s1           *= normalization;
 	    s2           *= normalization;

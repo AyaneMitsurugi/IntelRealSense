@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.cpp
+CommonAHRS.hpp
+/home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.hpp
+
+/home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.hpp
+math.h
+-
+librealsense2/rs.hpp
+-
+
 /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/Fusion.h
 FusionAhrs.h
 /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionAhrs.h
@@ -38,27 +48,21 @@ math.h
 stdint.h
 -
 
-/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.cpp
+MadgwickAHRS.hpp
+/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.hpp
 
-/home/nano/Monika/IntelRealSense/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp
-math.h
--
-MadgwickMahonyCommonAHRS.h
-/home/nano/Monika/IntelRealSense/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.h
-../Madgwick/MadgwickAHRS.h
-/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
-../Mahony/MahonyAHRS.h
-/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.hpp
+../Common/CommonAHRS.hpp
+/home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.hpp
 
-/home/nano/Monika/IntelRealSense/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.h
-stdio.h
--
-../../main_Madgwick_Mahony.h
-/home/nano/Monika/IntelRealSense/src/main_Madgwick_Mahony.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.cpp
+MahonyAHRS.hpp
+/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.hpp
 
-/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
-../../main_Madgwick_Mahony.h
-/home/nano/Monika/IntelRealSense/src/main_Madgwick_Mahony.h
+/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.hpp
+../Common/CommonAHRS.hpp
+/home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.hpp
 
 /home/nano/Monika/IntelRealSense/src/IntelRealSenseDemo/example-utils.hpp
 iostream
@@ -73,40 +77,10 @@ algorithm
 -
 
 /home/nano/Monika/IntelRealSense/src/main.cpp
-iostream
--
-fstream
--
-iomanip
--
-stdio.h
--
-time.h
--
-math.h
--
-librealsense2/rs.hpp
--
-IntelRealSenseDemo/example-utils.hpp
-/home/nano/Monika/IntelRealSense/src/IntelRealSenseDemo/example-utils.hpp
-main.h
-/home/nano/Monika/IntelRealSense/src/main.h
-AHRS/Fusion/Fusion.h
-/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/Fusion.h
-AHRS/Fusion/FusionAhrs.h
-/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionAhrs.h
-AHRS/Fusion/FusionBias.h
-/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionBias.h
-AHRS/Fusion/FusionCalibration.h
-/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionCalibration.h
-AHRS/Fusion/FusionTypes.h
-/home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionTypes.h
-AHRS/Madgwick/MadgwickAHRS.h
-/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
-AHRS/Mahony/MahonyAHRS.h
-/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
+main.hpp
+/home/nano/Monika/IntelRealSense/src/main.hpp
 
-/home/nano/Monika/IntelRealSense/src/main.h
+/home/nano/Monika/IntelRealSense/src/main.hpp
 iostream
 -
 fstream
@@ -133,12 +107,10 @@ AHRS/Fusion/FusionCalibration.h
 /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionCalibration.h
 AHRS/Fusion/FusionTypes.h
 /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionTypes.h
-AHRS/Madgwick/MadgwickAHRS.h
-/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
-AHRS/Mahony/MahonyAHRS.h
-/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
-
-/home/nano/Monika/IntelRealSense/src/main_Madgwick_Mahony.h
-librealsense2/rs.hpp
--
+AHRS/Madgwick/MadgwickAHRS.hpp
+/home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.hpp
+AHRS/Mahony/MahonyAHRS.hpp
+/home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.hpp
+AHRS/Common/CommonAHRS.hpp
+/home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.hpp
 

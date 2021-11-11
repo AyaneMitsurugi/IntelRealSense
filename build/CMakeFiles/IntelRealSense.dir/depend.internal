@@ -9,28 +9,26 @@ CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionBias.c
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionBias.h
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionTypes.h
-CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o
- /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.c
- /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
-CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o
- /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.c
- /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
- /home/nano/Monika/IntelRealSense/src/main_Madgwick_Mahony.h
-CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o
- /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
- /home/nano/Monika/IntelRealSense/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp
- /home/nano/Monika/IntelRealSense/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.h
- /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
- /home/nano/Monika/IntelRealSense/src/main_Madgwick_Mahony.h
+CMakeFiles/IntelRealSense.dir/src/AHRS/Common/CommonAHRS.cpp.o
+ /home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.cpp
+ /home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.hpp
+CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o
+ /home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.hpp
+ /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.cpp
+ /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.hpp
+CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o
+ /home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.hpp
+ /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.cpp
+ /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.hpp
 CMakeFiles/IntelRealSense.dir/src/main.cpp.o
+ /home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.hpp
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/Fusion.h
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionAhrs.h
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionBias.h
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionCalibration.h
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/FusionTypes.h
- /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.h
- /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.h
+ /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.hpp
+ /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.hpp
  /home/nano/Monika/IntelRealSense/src/IntelRealSenseDemo/example-utils.hpp
  /home/nano/Monika/IntelRealSense/src/main.cpp
- /home/nano/Monika/IntelRealSense/src/main.h
- /home/nano/Monika/IntelRealSense/src/main_Madgwick_Mahony.h
+ /home/nano/Monika/IntelRealSense/src/main.hpp

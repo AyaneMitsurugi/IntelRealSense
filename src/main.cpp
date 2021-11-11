@@ -1,22 +1,40 @@
 /* INCLUDES */
-#include <iostream>
-#include <fstream>
-#include <iomanip>
-#include <stdio.h>
-#include <time.h>
-#include <math.h>
-#include <librealsense2/rs.hpp>
-#include "IntelRealSenseDemo/example-utils.hpp"
-#include "main.h"
-#include "AHRS/Fusion/Fusion.h"
-#include "AHRS/Fusion/FusionAhrs.h"
-#include "AHRS/Fusion/FusionBias.h"
-#include "AHRS/Fusion/FusionCalibration.h"
-#include "AHRS/Fusion/FusionTypes.h"
-#include "AHRS/Madgwick/MadgwickAHRS.h"
-#include "AHRS/Mahony/MahonyAHRS.h"
+#include "main.hpp"
 
 /* VARIABLES */
+// Gyroscope
+float gx = 0.0;
+float gy = 0.0;
+float gz = 0.0;
+
+// Accelerometer
+float ax = 0.0;
+float ay = 0.0;
+float az = 0.0;
+
+// Magnetometer - not used in this project
+float mx = 0.0;
+float my = 0.0;
+float mz = 0.0;
+
+// Common
+float precision       = 6.0;
+
+/* AHRS Fusion-related parameters */
+FusionBias fusionBias;
+FusionAhrs fusionAhrs;
+
+FusionVector3 gyroscopeSensitivity = {
+    gyroscopeSensitivity.axis.x = 2000.0f,
+    gyroscopeSensitivity.axis.y = 2000.0f,
+    gyroscopeSensitivity.axis.z = 2000.0f,
+}; // replace these values with actual sensitivity in degrees per second per lsb as specified in gyroscope datasheet
+
+FusionVector3 accelerometerSensitivity = {
+    accelerometerSensitivity.axis.x = 16.0f,
+    accelerometerSensitivity.axis.y = 16.0f,
+    accelerometerSensitivity.axis.z = 16.0f,
+}; // replace these values with actual sensitivity in g per lsb as specified in accelerometer datasheet
 
 /* FUNCTIONS */
 /* Return buffer of current date and time in YYYY-MM-DD-HH:mm:ss format */
@@ -72,7 +90,7 @@ int main()
 
         /* AHRS Fusion-related functions */
         // Initialise gyroscope bias correction algorithm
-        FusionBiasInitialise(&fusionBias, 0.5f, samplePeriod); // stationary threshold = 0.5 degrees per second
+        FusionBiasInitialise(&fusionBias, 0.5f, sample_freq); // stationary threshold = 0.5 degrees per second
         // Initialise AHRS algorithm
         FusionAhrsInitialise(&fusionAhrs, 0.5f); // gain = 0.5
 
@@ -129,15 +147,15 @@ int main()
             calibratedGyroscope = FusionBiasUpdate(&fusionBias, calibratedGyroscope);
 
             // Update AHRS algorithm
-            FusionAhrsUpdateWithoutMagnetometer(&fusionAhrs, calibratedGyroscope, calibratedAccelerometer, samplePeriod);
+            FusionAhrsUpdateWithoutMagnetometer(&fusionAhrs, calibratedGyroscope, calibratedAccelerometer, sample_freq);
 
             FusionEulerAngles eulerAngles = FusionQuaternionToEulerAngles(FusionAhrsGetQuaternion(&fusionAhrs));
 
             /* AHRS Madgwick-related functions */
-            MadgwickGyroscopeAccelerometer(gx, gy, gz, ax, ay, az, inv_sample_freq, are_angles_computed);
+            MadgwickGyroscopeAccelerometer(gx, gy, gz, ax, ay, az);
 
             /* AHRS Mahony-related functions */
-            MahonyGyroscopeAccelerometer(gx, gy, gz, ax, ay, az, inv_sample_freq, are_angles_computed);
+            MahonyGyroscopeAccelerometer(gx, gy, gz, ax, ay, az);
 
 	    // Output file - save roll-pitch-yaw calculated by all three algorithms
 	    if (outfile.is_open()) {

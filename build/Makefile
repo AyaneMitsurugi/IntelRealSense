@@ -123,6 +123,33 @@ IntelRealSense/fast:
 	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/build
 .PHONY : IntelRealSense/fast
 
+src/AHRS/Common/CommonAHRS.o: src/AHRS/Common/CommonAHRS.cpp.o
+
+.PHONY : src/AHRS/Common/CommonAHRS.o
+
+# target to build an object file
+src/AHRS/Common/CommonAHRS.cpp.o:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Common/CommonAHRS.cpp.o
+.PHONY : src/AHRS/Common/CommonAHRS.cpp.o
+
+src/AHRS/Common/CommonAHRS.i: src/AHRS/Common/CommonAHRS.cpp.i
+
+.PHONY : src/AHRS/Common/CommonAHRS.i
+
+# target to preprocess a source file
+src/AHRS/Common/CommonAHRS.cpp.i:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Common/CommonAHRS.cpp.i
+.PHONY : src/AHRS/Common/CommonAHRS.cpp.i
+
+src/AHRS/Common/CommonAHRS.s: src/AHRS/Common/CommonAHRS.cpp.s
+
+.PHONY : src/AHRS/Common/CommonAHRS.s
+
+# target to generate assembly for a file
+src/AHRS/Common/CommonAHRS.cpp.s:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Common/CommonAHRS.cpp.s
+.PHONY : src/AHRS/Common/CommonAHRS.cpp.s
+
 src/AHRS/Fusion/FusionAhrs.o: src/AHRS/Fusion/FusionAhrs.c.o
 
 .PHONY : src/AHRS/Fusion/FusionAhrs.o
@@ -177,86 +204,59 @@ src/AHRS/Fusion/FusionBias.c.s:
 	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.s
 .PHONY : src/AHRS/Fusion/FusionBias.c.s
 
-src/AHRS/Madgwick/MadgwickAHRS.o: src/AHRS/Madgwick/MadgwickAHRS.c.o
+src/AHRS/Madgwick/MadgwickAHRS.o: src/AHRS/Madgwick/MadgwickAHRS.cpp.o
 
 .PHONY : src/AHRS/Madgwick/MadgwickAHRS.o
 
 # target to build an object file
-src/AHRS/Madgwick/MadgwickAHRS.c.o:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.o
-.PHONY : src/AHRS/Madgwick/MadgwickAHRS.c.o
+src/AHRS/Madgwick/MadgwickAHRS.cpp.o:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o
+.PHONY : src/AHRS/Madgwick/MadgwickAHRS.cpp.o
 
-src/AHRS/Madgwick/MadgwickAHRS.i: src/AHRS/Madgwick/MadgwickAHRS.c.i
+src/AHRS/Madgwick/MadgwickAHRS.i: src/AHRS/Madgwick/MadgwickAHRS.cpp.i
 
 .PHONY : src/AHRS/Madgwick/MadgwickAHRS.i
 
 # target to preprocess a source file
-src/AHRS/Madgwick/MadgwickAHRS.c.i:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.i
-.PHONY : src/AHRS/Madgwick/MadgwickAHRS.c.i
+src/AHRS/Madgwick/MadgwickAHRS.cpp.i:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.i
+.PHONY : src/AHRS/Madgwick/MadgwickAHRS.cpp.i
 
-src/AHRS/Madgwick/MadgwickAHRS.s: src/AHRS/Madgwick/MadgwickAHRS.c.s
+src/AHRS/Madgwick/MadgwickAHRS.s: src/AHRS/Madgwick/MadgwickAHRS.cpp.s
 
 .PHONY : src/AHRS/Madgwick/MadgwickAHRS.s
 
 # target to generate assembly for a file
-src/AHRS/Madgwick/MadgwickAHRS.c.s:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.c.s
-.PHONY : src/AHRS/Madgwick/MadgwickAHRS.c.s
+src/AHRS/Madgwick/MadgwickAHRS.cpp.s:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.s
+.PHONY : src/AHRS/Madgwick/MadgwickAHRS.cpp.s
 
-src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.o: src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o
-
-.PHONY : src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.o
-
-# target to build an object file
-src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o
-.PHONY : src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.o
-
-src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.i: src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.i
-
-.PHONY : src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.i
-
-# target to preprocess a source file
-src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.i:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.i
-.PHONY : src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.i
-
-src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.s: src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.s
-
-.PHONY : src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.s
-
-# target to generate assembly for a file
-src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.s:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.s
-.PHONY : src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.cpp.s
-
-src/AHRS/Mahony/MahonyAHRS.o: src/AHRS/Mahony/MahonyAHRS.c.o
+src/AHRS/Mahony/MahonyAHRS.o: src/AHRS/Mahony/MahonyAHRS.cpp.o
 
 .PHONY : src/AHRS/Mahony/MahonyAHRS.o
 
 # target to build an object file
-src/AHRS/Mahony/MahonyAHRS.c.o:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.o
-.PHONY : src/AHRS/Mahony/MahonyAHRS.c.o
+src/AHRS/Mahony/MahonyAHRS.cpp.o:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o
+.PHONY : src/AHRS/Mahony/MahonyAHRS.cpp.o
 
-src/AHRS/Mahony/MahonyAHRS.i: src/AHRS/Mahony/MahonyAHRS.c.i
+src/AHRS/Mahony/MahonyAHRS.i: src/AHRS/Mahony/MahonyAHRS.cpp.i
 
 .PHONY : src/AHRS/Mahony/MahonyAHRS.i
 
 # target to preprocess a source file
-src/AHRS/Mahony/MahonyAHRS.c.i:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.i
-.PHONY : src/AHRS/Mahony/MahonyAHRS.c.i
+src/AHRS/Mahony/MahonyAHRS.cpp.i:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.i
+.PHONY : src/AHRS/Mahony/MahonyAHRS.cpp.i
 
-src/AHRS/Mahony/MahonyAHRS.s: src/AHRS/Mahony/MahonyAHRS.c.s
+src/AHRS/Mahony/MahonyAHRS.s: src/AHRS/Mahony/MahonyAHRS.cpp.s
 
 .PHONY : src/AHRS/Mahony/MahonyAHRS.s
 
 # target to generate assembly for a file
-src/AHRS/Mahony/MahonyAHRS.c.s:
-	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.c.s
-.PHONY : src/AHRS/Mahony/MahonyAHRS.c.s
+src/AHRS/Mahony/MahonyAHRS.cpp.s:
+	$(MAKE) -f CMakeFiles/IntelRealSense.dir/build.make CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.s
+.PHONY : src/AHRS/Mahony/MahonyAHRS.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -294,6 +294,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... IntelRealSense"
 	@echo "... edit_cache"
+	@echo "... src/AHRS/Common/CommonAHRS.o"
+	@echo "... src/AHRS/Common/CommonAHRS.i"
+	@echo "... src/AHRS/Common/CommonAHRS.s"
 	@echo "... src/AHRS/Fusion/FusionAhrs.o"
 	@echo "... src/AHRS/Fusion/FusionAhrs.i"
 	@echo "... src/AHRS/Fusion/FusionAhrs.s"
@@ -303,9 +306,6 @@ help:
 	@echo "... src/AHRS/Madgwick/MadgwickAHRS.o"
 	@echo "... src/AHRS/Madgwick/MadgwickAHRS.i"
 	@echo "... src/AHRS/Madgwick/MadgwickAHRS.s"
-	@echo "... src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.o"
-	@echo "... src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.i"
-	@echo "... src/AHRS/MadgwickMahonyCommon/MadgwickMahonyCommonAHRS.s"
 	@echo "... src/AHRS/Mahony/MahonyAHRS.o"
 	@echo "... src/AHRS/Mahony/MahonyAHRS.i"
 	@echo "... src/AHRS/Mahony/MahonyAHRS.s"
