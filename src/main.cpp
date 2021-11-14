@@ -35,9 +35,9 @@ FusionVector3 gyroscopeSensitivity = {
 }; // replace these values with actual sensitivity in degrees per second per lsb as specified in gyroscope datasheet
 
 FusionVector3 accelerometerSensitivity = {
-    accelerometerSensitivity.axis.x = 8.0f,
-    accelerometerSensitivity.axis.y = 8.0f,
-    accelerometerSensitivity.axis.z = 8.0f,
+    accelerometerSensitivity.axis.x = 16.0f,
+    accelerometerSensitivity.axis.y = 16.0f,
+    accelerometerSensitivity.axis.z = 16.0f,
 }; // replace these values with actual sensitivity in g per lsb as specified in accelerometer datasheet
 
 float roll_fus_deg  = 0.0;
