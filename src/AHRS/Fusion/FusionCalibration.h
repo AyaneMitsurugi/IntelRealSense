@@ -2,6 +2,7 @@
  * @file FusionCalibration.h
  * @author Seb Madgwick
  * @brief Gyroscope, accelerometer, and magnetometer calibration model.
+ * @link https://github.com/xioTechnologies/Fusion
  *
  * Static inline implementations are used to optimise for increased execution
  * speed.

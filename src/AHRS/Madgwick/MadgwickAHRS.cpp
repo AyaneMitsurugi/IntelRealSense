@@ -1,4 +1,4 @@
-/* Link: https://github.com/PaulStoffregen/MadgwickAHRS */
+/* https://github.com/PaulStoffregen/MadgwickAHRS */
 
 /* DEFINES */
 #ifndef _MADGWICK_AHRS_C_
@@ -123,6 +123,7 @@ void MadgwickGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, fl
 	are_angles_computed = 0;
 }
 
+// gx, gy, gz [rad/s]; ax, ay, az [rad/s^2]
 void MadgwickGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float ay, float az) {
 	float normalization;
 	float qDot1, qDot2, qDot3, qDot4;

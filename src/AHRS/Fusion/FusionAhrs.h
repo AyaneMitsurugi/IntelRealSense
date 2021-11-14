@@ -5,6 +5,8 @@
  * and magnetometer measurements into a single measurement of orientation
  * relative to the Earth (NWU convention).
  *
+ * @link https://github.com/xioTechnologies/Fusion
+ *
  * The algorithm behaviour is governed by a gain.  A low gain will decrease the
  * influence of the accelerometer and magnetometer so that the algorithm will
  * better reject disturbances causes by translational motion and temporary

@@ -36,6 +36,11 @@ void MahonyGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, floa
 		return;
 	}
 
+	/* Convert gyroscope degrees/sec to radians/sec
+	gx *= 0.0174533f;
+	gy *= 0.0174533f;
+	gz *= 0.0174533f;*/
+
 	// Compute feedback only if accelerometer's measurement are valid (avoids NaN in accelerometer normalisation)
 	if(!((ax == 0.0f) && (ay == 0.0f) && (az == 0.0f))) {
 
@@ -132,11 +137,17 @@ void MahonyGyroscopeAccelerometerMagnetometer(float gx, float gy, float gz, floa
 	are_angles_computed = 0;
 }
 
+// gx, gy, gz [rad/s]; ax, ay, az [rad/s^2]
 void MahonyGyroscopeAccelerometer(float gx, float gy, float gz, float ax, float ay, float az) {
 	float normalization;
 	float halfvx, halfvy, halfvz;
 	float halfex, halfey, halfez;
 	float qa, qb, qc;
+
+	/* Convert gyroscope degrees/sec to radians/sec
+	gx *= 0.0174533f;
+	gy *= 0.0174533f;
+	gz *= 0.0174533f;*/
 
 	// Compute feedback only if accelerometer's measurement are valid (avoids NaN in accelerometer normalisation)
 	if(!((ax == 0.0f) && (ay == 0.0f) && (az == 0.0f))) {

@@ -4,6 +4,8 @@
  * @brief Main header file for the library.  This is the only file that needs to
  * be included when using the library.
  *
+ * @link https://github.com/xioTechnologies/Fusion
+ *
  * Fusion is an ANSI C99 compliment sensor fusion library for sensor arrays of
  * gyroscopes, accelerometers, and magnetometers.  Fusion was specifically
  * developed for use with embedded systems and has been optimised for execution

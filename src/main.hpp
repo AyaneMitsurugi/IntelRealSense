@@ -46,9 +46,51 @@ extern FusionAhrs fusionAhrs;
 extern FusionVector3 gyroscopeSensitivity;
 extern FusionVector3 accelerometerSensitivity;
 
-/* AHRS Madgwick-Mahony-related parameters */
-extern float are_angles_computed;
+/* AHRS Fusion-related parameters */
+extern float roll_fus_deg;
+extern float pitch_fus_deg;
+extern float yaw_fus_deg;
+
+extern float roll_fus_rad;
+extern float pitch_fus_rad;
+extern float yaw_fus_rad;
+
+/* AHRS Madgwick-related parameters */
+extern float roll_mad_deg;
+extern float pitch_mad_deg;
+extern float yaw_mad_deg;
+
+extern float roll_mad_rad;
+extern float pitch_mad_rad;
+extern float yaw_mad_rad;
+
+/* AHRS Mahony-related functions */
+extern float roll_mah_deg;
+extern float pitch_mah_deg;
+extern float yaw_mah_deg;
+
+extern float roll_mah_rad;
+extern float pitch_mah_rad;
+extern float yaw_mah_rad;
 
 /* FUNCTIONS */
 /* Return buffer of current date and time in YYYY-MM-DD-HH:mm:ss format */
 const std::string currentDateTime();
+
+/* Save headers in the output file */
+void saveHeadersInOutputFile(void);
+
+/* Save sample index, translation and velocity in the output file */
+void saveTransVelInOutputFile(int sample_idx, float trans_x, float trans_y, float trans_z, float vel_x, float vel_y, float vel_z);
+
+/* Save gyroscope's and accelerometer's raw data in the output file */
+void saveGyroAccInOutputFile(float gx, float gy, float gz, float ax, float ay, float az);
+
+/* Save Roll-Pitch-Yaw calculated by all Fusion Algorithm in the output file */
+void saveRollPitchYawFusionInOutputFile (float roll_fus_deg, float pitch_fus_deg, float yaw_fus_deg, float roll_fus_rad, float pitch_fus_ra, float yaw_fus_rad);
+
+/* Save Roll-Pitch-Yaw calculated by all Madgwick Algorithm in the output file */
+void saveRollPitchYawMadgwickInOutputFile (float roll_mad_deg, float pitch_mad_deg, float yaw_mad_deg, float roll_mad_rad, float pitch_mad_rad, float yaw_mad_rad);
+
+/* Save Roll-Pitch-Yaw calculated by Mahony Algorithm in the output file */
+void saveRollPitchYawMahonyInOutputFile (float roll_mah_deg, float pitch_mah_deg, float yaw_mah_deg, float roll_mah_rad, float pitch_mah_rad, float yaw_mah_rad);

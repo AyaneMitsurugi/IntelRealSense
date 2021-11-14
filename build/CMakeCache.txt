@@ -188,7 +188,7 @@ IntelRealSense_BINARY_DIR:STATIC=/home/nano/Monika/IntelRealSense/build
 IntelRealSense_SOURCE_DIR:STATIC=/home/nano/Monika/IntelRealSense
 
 //The directory containing a CMake configuration file for realsense2.
-realsense2_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/realsense2
+realsense2_DIR:PATH=/opt/ros/melodic/lib/cmake/realsense2
 
 
 ########################

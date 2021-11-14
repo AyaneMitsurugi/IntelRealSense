@@ -12,6 +12,7 @@ set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
+  "/opt/ros/melodic/include"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.cpp" "/home/nano/Monika/IntelRealSense/build/CMakeFiles/IntelRealSense.dir/src/AHRS/Common/CommonAHRS.cpp.o"
@@ -23,6 +24,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/opt/ros/melodic/include"
   )
 
 # Targets to which this target links.

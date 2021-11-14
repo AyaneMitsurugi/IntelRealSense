@@ -220,7 +220,7 @@ IntelRealSense: CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp
 IntelRealSense: CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o
 IntelRealSense: CMakeFiles/IntelRealSense.dir/src/AHRS/Common/CommonAHRS.cpp.o
 IntelRealSense: CMakeFiles/IntelRealSense.dir/build.make
-IntelRealSense: /usr/lib/aarch64-linux-gnu/librealsense2.so.2.49.0
+IntelRealSense: /opt/ros/melodic/lib/librealsense2.so.2.48.0
 IntelRealSense: CMakeFiles/IntelRealSense.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nano/Monika/IntelRealSense/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable IntelRealSense"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/IntelRealSense.dir/link.txt --verbose=$(VERBOSE)

@@ -12,14 +12,77 @@ CMakeFiles/IntelRealSense.dir/src/AHRS/Fusion/FusionBias.c.o
 CMakeFiles/IntelRealSense.dir/src/AHRS/Common/CommonAHRS.cpp.o
  /home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.cpp
  /home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.hpp
+ /opt/ros/melodic/include/librealsense2/h/rs_config.h
+ /opt/ros/melodic/include/librealsense2/h/rs_context.h
+ /opt/ros/melodic/include/librealsense2/h/rs_device.h
+ /opt/ros/melodic/include/librealsense2/h/rs_frame.h
+ /opt/ros/melodic/include/librealsense2/h/rs_option.h
+ /opt/ros/melodic/include/librealsense2/h/rs_pipeline.h
+ /opt/ros/melodic/include/librealsense2/h/rs_processing.h
+ /opt/ros/melodic/include/librealsense2/h/rs_record_playback.h
+ /opt/ros/melodic/include/librealsense2/h/rs_sensor.h
+ /opt/ros/melodic/include/librealsense2/h/rs_types.h
+ /opt/ros/melodic/include/librealsense2/hpp/rs_context.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_device.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_frame.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_options.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_pipeline.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_processing.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_record_playback.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_sensor.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_types.hpp
+ /opt/ros/melodic/include/librealsense2/rs.h
+ /opt/ros/melodic/include/librealsense2/rs.hpp
 CMakeFiles/IntelRealSense.dir/src/AHRS/Madgwick/MadgwickAHRS.cpp.o
  /home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.hpp
  /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.cpp
  /home/nano/Monika/IntelRealSense/src/AHRS/Madgwick/MadgwickAHRS.hpp
+ /opt/ros/melodic/include/librealsense2/h/rs_config.h
+ /opt/ros/melodic/include/librealsense2/h/rs_context.h
+ /opt/ros/melodic/include/librealsense2/h/rs_device.h
+ /opt/ros/melodic/include/librealsense2/h/rs_frame.h
+ /opt/ros/melodic/include/librealsense2/h/rs_option.h
+ /opt/ros/melodic/include/librealsense2/h/rs_pipeline.h
+ /opt/ros/melodic/include/librealsense2/h/rs_processing.h
+ /opt/ros/melodic/include/librealsense2/h/rs_record_playback.h
+ /opt/ros/melodic/include/librealsense2/h/rs_sensor.h
+ /opt/ros/melodic/include/librealsense2/h/rs_types.h
+ /opt/ros/melodic/include/librealsense2/hpp/rs_context.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_device.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_frame.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_options.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_pipeline.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_processing.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_record_playback.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_sensor.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_types.hpp
+ /opt/ros/melodic/include/librealsense2/rs.h
+ /opt/ros/melodic/include/librealsense2/rs.hpp
 CMakeFiles/IntelRealSense.dir/src/AHRS/Mahony/MahonyAHRS.cpp.o
  /home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.hpp
  /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.cpp
  /home/nano/Monika/IntelRealSense/src/AHRS/Mahony/MahonyAHRS.hpp
+ /opt/ros/melodic/include/librealsense2/h/rs_config.h
+ /opt/ros/melodic/include/librealsense2/h/rs_context.h
+ /opt/ros/melodic/include/librealsense2/h/rs_device.h
+ /opt/ros/melodic/include/librealsense2/h/rs_frame.h
+ /opt/ros/melodic/include/librealsense2/h/rs_option.h
+ /opt/ros/melodic/include/librealsense2/h/rs_pipeline.h
+ /opt/ros/melodic/include/librealsense2/h/rs_processing.h
+ /opt/ros/melodic/include/librealsense2/h/rs_record_playback.h
+ /opt/ros/melodic/include/librealsense2/h/rs_sensor.h
+ /opt/ros/melodic/include/librealsense2/h/rs_types.h
+ /opt/ros/melodic/include/librealsense2/hpp/rs_context.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_device.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_frame.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_options.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_pipeline.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_processing.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_record_playback.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_sensor.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_types.hpp
+ /opt/ros/melodic/include/librealsense2/rs.h
+ /opt/ros/melodic/include/librealsense2/rs.hpp
 CMakeFiles/IntelRealSense.dir/src/main.cpp.o
  /home/nano/Monika/IntelRealSense/src/AHRS/Common/CommonAHRS.hpp
  /home/nano/Monika/IntelRealSense/src/AHRS/Fusion/Fusion.h
@@ -32,3 +95,24 @@ CMakeFiles/IntelRealSense.dir/src/main.cpp.o
  /home/nano/Monika/IntelRealSense/src/IntelRealSenseDemo/example-utils.hpp
  /home/nano/Monika/IntelRealSense/src/main.cpp
  /home/nano/Monika/IntelRealSense/src/main.hpp
+ /opt/ros/melodic/include/librealsense2/h/rs_config.h
+ /opt/ros/melodic/include/librealsense2/h/rs_context.h
+ /opt/ros/melodic/include/librealsense2/h/rs_device.h
+ /opt/ros/melodic/include/librealsense2/h/rs_frame.h
+ /opt/ros/melodic/include/librealsense2/h/rs_option.h
+ /opt/ros/melodic/include/librealsense2/h/rs_pipeline.h
+ /opt/ros/melodic/include/librealsense2/h/rs_processing.h
+ /opt/ros/melodic/include/librealsense2/h/rs_record_playback.h
+ /opt/ros/melodic/include/librealsense2/h/rs_sensor.h
+ /opt/ros/melodic/include/librealsense2/h/rs_types.h
+ /opt/ros/melodic/include/librealsense2/hpp/rs_context.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_device.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_frame.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_options.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_pipeline.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_processing.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_record_playback.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_sensor.hpp
+ /opt/ros/melodic/include/librealsense2/hpp/rs_types.hpp
+ /opt/ros/melodic/include/librealsense2/rs.h
+ /opt/ros/melodic/include/librealsense2/rs.hpp

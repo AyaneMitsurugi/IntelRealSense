@@ -2,7 +2,8 @@
  * @file FusionTypes.h
  * @author Seb Madgwick
  * @brief Common types and their associated operations.
- *
+ * @link https://github.com/xioTechnologies/Fusion
+ * 
  * Static inline implementations are used to optimise for increased execution
  * speed.
  */

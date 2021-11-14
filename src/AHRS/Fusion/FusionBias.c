@@ -5,6 +5,7 @@
  * of the gyroscope bias.  The algorithm will detect when the gyroscope is
  * stationary for a set period of time and then begin to sample gyroscope
  * measurements to calculate the bias as an average.
+ * @link https://github.com/xioTechnologies/Fusion
  */
 
 //------------------------------------------------------------------------------
