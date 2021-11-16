@@ -16,6 +16,16 @@ float ax = 0.0;
 float ay = 0.0;
 float az = 0.0;
 
+// Gyroscope - angular velocity for Fusion Algorithm [deg/s]
+float fusion_gx = 0.0;
+float fusion_gy = 0.0;
+float fusion_gz = 0.0;
+
+// Accelerometer - angular acceleration for Fusion Algorithm [g]
+float fusion_ax = 0.0;
+float fusion_ay = 0.0;
+float fusion_az = 0.0;
+
 // Magnetometer - not used in this project
 float mx = 0.0;
 float my = 0.0;
@@ -85,8 +95,8 @@ void saveHeadersInOutputFile(void) {
         outfile << "Index,";
         outfile << "Translation X [m],Translation Y [m], Translation Z [m],";
         outfile << "Velocity X [m/s],Velocity Y [m/s], Velocity Z [m/s],";
-        outfile << "Angular velocity X [rad/s], Angular velocity Y [rad/s], Angular velocity Z [rad/s],";
-        outfile << "Angular acceleration X [rad/s^2],Angular acceleration Y [rad/s^2],Angular acceleration Z [rad/s^2],";
+        outfile << "Angular velocity X [rad/s], Angular velocity Y [rad/s], Angular velocity Z [rad/s],";                 // Gyroscope's raw data
+        outfile << "Angular acceleration X [rad/s^2],Angular acceleration Y [rad/s^2],Angular acceleration Z [rad/s^2],"; // Accelerometer's raw data
         outfile << "Fusion Roll [degrees], Fusion Pitch [degrees],Fusion Yaw [degrees],";
         outfile << "Fusion Roll [rad], Fusion Pitch [rad],Fusion Yaw [rad],";
         outfile << "Madgwick Roll [degrees], Madgwick Pitch [degrees],Madgwick Yaw [degrees],";
@@ -113,8 +123,31 @@ void saveGyroAccInOutputFile(float gx, float gy, float gz, float ax, float ay, f
     }
 }
 
+/* Convert rad/s^2 to g */
+/* https://stackoverflow.com/questions/6291931/how-to-calculate-g-force-using-x-y-z-values-from-the-accelerometer-in-android/44421684 */
+void convertAccForFusion(float ax, float ay, float az) {
+    const float g = 9.81;
+
+    // Firstly, convert rad/s^2 to deg/s^2
+    fusion_ax = FusionRadiansToDegrees(ax);
+    fusion_ay = FusionRadiansToDegrees(ay);
+    fusion_az = FusionRadiansToDegrees(az);
+
+    // Secondly, divide by g = 9.81 to convert deg/s^2 to g
+    fusion_ax /= g;
+    fusion_ay /= g;
+    fusion_az /= g;
+}
+
+/* Normalize Roll-Pitch-Yaw calculated by Fusion Algoritm */
+void normalizeRollPitchYawFusion(float roll_rad, float pitch_rad, float yaw_rad) {
+    roll_fus_rad  = fmod(roll_rad, (2*M_PI));
+    pitch_fus_rad = fmod(pitch_rad, (2*M_PI));
+    yaw_fus_rad   = fmod(yaw_rad, (2*M_PI));
+}
+
 /* Save Roll-Pitch-Yaw calculated by all Fusion Algorithm in the output file */
-void saveRollPitchYawFusionInOutputFile (float roll_fus_deg, float pitch_fus_deg, float yaw_fus_deg, float roll_fus_rad, float pitch_fus_ra, float yaw_fus_rad) {
+void saveRollPitchYawFusionInOutputFile (float roll_fus_deg, float pitch_fus_deg, float yaw_fus_deg, float roll_fus_rad, float pitch_fus_rad, float yaw_fus_rad) {
 	if (outfile.is_open()) {
         outfile << std::setprecision(precision) << std::fixed << roll_fus_deg << "," << pitch_fus_deg << "," << yaw_fus_deg << ",";
         outfile << std::setprecision(precision) << std::fixed << roll_fus_rad << "," << pitch_fus_rad << "," << yaw_fus_rad << ",";
@@ -204,19 +237,26 @@ int main()
             saveGyroAccInOutputFile(gx, gy, gz, ax, ay, az);
 
             /* AHRS FUSION-RELATED FUNCTIONS */
+            fusion_gx  = FusionRadiansToDegrees(gx); // [deg/s]
+            fusion_gy  = FusionRadiansToDegrees(gy); // [deg/s]
+            fusion_gz  = FusionRadiansToDegrees(gz); // [deg/s]
+
 	        // Calibrate gyroscope
             FusionVector3 uncalibratedGyroscope = {
-                uncalibratedGyroscope.axis.x = gx,
-                uncalibratedGyroscope.axis.y = gy,
-                uncalibratedGyroscope.axis.z = gz,
+                uncalibratedGyroscope.axis.x = fusion_gx,
+                uncalibratedGyroscope.axis.y = fusion_gy,
+                uncalibratedGyroscope.axis.z = fusion_gz,
             };
             FusionVector3 calibratedGyroscope = FusionCalibrationInertial(uncalibratedGyroscope, FUSION_ROTATION_MATRIX_IDENTITY, gyroscopeSensitivity, FUSION_VECTOR3_ZERO);
 
+            // Accelometer - convert rad/s^2 to deg/s^2 and then to g
+            convertAccForFusion(ax, ay, az); // [g]
+
 	        // Calibrate accelerometer
             FusionVector3 uncalibratedAccelerometer = {
-                uncalibratedAccelerometer.axis.x = ax,
-                uncalibratedAccelerometer.axis.y = ay,
-                uncalibratedAccelerometer.axis.z = az,
+                uncalibratedAccelerometer.axis.x = fusion_ax,
+                uncalibratedAccelerometer.axis.y = fusion_ay,
+                uncalibratedAccelerometer.axis.z = fusion_az,
             };
             FusionVector3 calibratedAccelerometer = FusionCalibrationInertial(uncalibratedAccelerometer, FUSION_ROTATION_MATRIX_IDENTITY, accelerometerSensitivity, FUSION_VECTOR3_ZERO);
 
@@ -228,13 +268,15 @@ int main()
 
             FusionEulerAngles eulerAngles = FusionQuaternionToEulerAngles(FusionAhrsGetQuaternion(&fusionAhrs));
 
-            roll_fus_deg  = eulerAngles.angle.roll;  // [degrees]
-            pitch_fus_deg = eulerAngles.angle.pitch; // [degrees]
-            yaw_fus_deg   = eulerAngles.angle.yaw;   // [degrees]
+            roll_fus_rad  = eulerAngles.angle.roll;  // [rad]
+            pitch_fus_rad = eulerAngles.angle.pitch; // [rad]
+            yaw_fus_rad   = eulerAngles.angle.yaw;   // [rad]
 
-            roll_fus_rad  = FusionDegreesToRadians(roll_fus_deg);  // [rad]
-            pitch_fus_rad = FusionDegreesToRadians(pitch_fus_deg); // [rad]
-            yaw_fus_rad   = FusionDegreesToRadians(yaw_fus_deg);   // [rad]
+            normalizeRollPitchYawFusion(roll_fus_rad, pitch_fus_rad, yaw_fus_rad);
+
+            roll_fus_deg  = FusionRadiansToDegrees(roll_fus_rad);  // [degrees]
+            pitch_fus_deg = FusionRadiansToDegrees(pitch_fus_rad); // [degrees]
+            yaw_fus_deg   = FusionRadiansToDegrees(yaw_fus_rad);   // [degrees]
 
             saveRollPitchYawFusionInOutputFile (roll_fus_deg, pitch_fus_deg, yaw_fus_deg, roll_fus_rad, pitch_fus_rad,  yaw_fus_rad);
 
@@ -242,13 +284,13 @@ int main()
             MadgwickGyroscopeAccelerometer(gx, gy, gz, ax, ay, az);
             computeAngles();
 
-            roll_mad_deg  = roll;  // [degrees]
-	        pitch_mad_deg = pitch; // [degrees]
-	        yaw_mad_deg   = yaw;   // [degrees]
+            roll_mad_rad  = roll;  // [rad]
+	        pitch_mad_rad = pitch; // [rad]
+	        yaw_mad_rad   = yaw;   // [rad]
 
-            roll_mad_rad  = FusionDegreesToRadians(roll_mad_deg);  // [rad]
-            pitch_mad_rad = FusionDegreesToRadians(pitch_mad_deg); // [rad]
-            yaw_mad_rad   = FusionDegreesToRadians(yaw_mad_deg);   // [rad]
+            roll_mad_deg  = FusionRadiansToDegrees(roll_mad_rad);  // [degrees]
+            pitch_mad_deg = FusionRadiansToDegrees(pitch_mad_rad); // [degrees]
+            yaw_mad_deg   = FusionRadiansToDegrees(yaw_mad_rad);   // [degrees]
 
             saveRollPitchYawMadgwickInOutputFile (roll_mad_deg, pitch_mad_deg, yaw_mad_deg, roll_mad_rad, pitch_mad_rad, yaw_mad_rad);
 
@@ -256,13 +298,13 @@ int main()
             MahonyGyroscopeAccelerometer(gx, gy, gz, ax, ay, az);
             computeAngles();
 
-            roll_mah_deg  = roll;  // [degrees]
-	        pitch_mah_deg = pitch; // [degrees]
-	        yaw_mah_deg   = yaw;   // [degrees]
+            roll_mah_rad  = roll;  // [rad]
+	        pitch_mah_rad = pitch; // [rad]
+	        yaw_mah_rad   = yaw;   // [rad]
 
-            roll_mah_rad  = FusionDegreesToRadians(roll_mah_deg);  // [rad]
-            pitch_mah_rad = FusionDegreesToRadians(pitch_mah_deg); // [rad]
-            yaw_mah_rad   = FusionDegreesToRadians(yaw_mah_deg);   // [rad]
+            roll_mah_deg  = FusionRadiansToDegrees(roll_mah_rad);  // [degrees]
+            pitch_mah_deg = FusionRadiansToDegrees(pitch_mah_rad); // [degrees]
+            yaw_mah_deg   = FusionRadiansToDegrees(yaw_mah_rad);   // [degrees]
 
             saveRollPitchYawMahonyInOutputFile(roll_mah_deg, pitch_mah_deg, yaw_mah_deg, roll_mah_rad, pitch_mah_rad, yaw_mah_rad);
 

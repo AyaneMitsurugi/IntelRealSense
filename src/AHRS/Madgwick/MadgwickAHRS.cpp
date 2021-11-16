@@ -144,6 +144,12 @@ void MadgwickGyroscopeAccelerometer(float gx, float gy, float gz, float ax, floa
 	qDot3 = 0.5f * (q0*gy - q1*gz + q3*gx);
 	qDot4 = 0.5f * (q0*gz + q1*gy - q2*gx);
 
+	// Rate of change of quaternion from gyroscope
+	qDot1 = 0.5f * (-q1 * gx - q2 * gy - q3 * gz);
+	qDot2 = 0.5f * (q0 * gx + q2 * gz - q3 * gy);
+	qDot3 = 0.5f * (q0 * gy - q1 * gz + q3 * gx);
+	qDot4 = 0.5f * (q0 * gz + q1 * gy - q2 * gx);
+
 	// Compute feedback only if accelerometer's measurement are valid (avoids NaN in accelerometer normalisation)
 	if(!((ax == 0.0f) && (ay == 0.0f) && (az == 0.0f))) {
 
@@ -189,22 +195,22 @@ void MadgwickGyroscopeAccelerometer(float gx, float gy, float gz, float ax, floa
 	    qDot2 -= beta * s1;
 	    qDot3 -= beta * s2;
 	    qDot4 -= beta * s3;
-		}  // END OF: if(!((ax == 0.0f) && (ay == 0.0f) && (az == 0.0f)))
+	}  // END OF: if(!((ax == 0.0f) && (ay == 0.0f) && (az == 0.0f)))
 
-		// Integrate rate of change of quaternions
-		q0 += qDot1 * inv_sample_freq;
-		q1 += qDot2 * inv_sample_freq;
-		q2 += qDot3 * inv_sample_freq;
-		q3 += qDot4 * inv_sample_freq;
+	// Integrate rate of change of quaternions
+	q0 += qDot1 * inv_sample_freq;
+	q1 += qDot2 * inv_sample_freq;
+	q2 += qDot3 * inv_sample_freq;
+	q3 += qDot4 * inv_sample_freq;
 
-		// Normalise quaternions
-		normalization = fastInvSqrt(q0*q0 + q1*q1 + q2*q2 + q3*q3);
-		q0           *= normalization;
-		q1           *= normalization;
-		q2           *= normalization;
-		q3           *= normalization;
+	// Normalise quaternions
+	normalization = fastInvSqrt(q0*q0 + q1*q1 + q2*q2 + q3*q3);
+	q0           *= normalization;
+	q1           *= normalization;
+	q2           *= normalization;
+	q3           *= normalization;
 
-		are_angles_computed = 0;
+	are_angles_computed = 0;
 }
 
 #endif /* _MADGWICK_AHRS_C_ */

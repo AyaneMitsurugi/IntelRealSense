@@ -27,6 +27,16 @@ extern float ax;
 extern float ay;
 extern float az;
 
+// Gyroscope - angular velocity for Fusion Algorithm [deg/s]
+extern float fusion_gx;
+extern float fusion_gy;
+extern float fusion_gz;
+
+// Accelerometer - angular acceleration for Fusion Algorithm [g]
+extern float fusion_ax;
+extern float fusion_ay;
+extern float fusion_az;
+
 // Magnetometer - not used in this project
 extern float mx;
 extern float my;
@@ -86,10 +96,17 @@ void saveTransVelInOutputFile(int sample_idx, float trans_x, float trans_y, floa
 /* Save gyroscope's and accelerometer's raw data in the output file */
 void saveGyroAccInOutputFile(float gx, float gy, float gz, float ax, float ay, float az);
 
-/* Save Roll-Pitch-Yaw calculated by all Fusion Algorithm in the output file */
-void saveRollPitchYawFusionInOutputFile (float roll_fus_deg, float pitch_fus_deg, float yaw_fus_deg, float roll_fus_rad, float pitch_fus_ra, float yaw_fus_rad);
+/* Convert rad/s^2 to g*/
+/* https://stackoverflow.com/questions/6291931/how-to-calculate-g-force-using-x-y-z-values-from-the-accelerometer-in-android/44421684 */
+void convertAccForFusion(float ax, float ay, float az);
 
-/* Save Roll-Pitch-Yaw calculated by all Madgwick Algorithm in the output file */
+/* Normalize Roll-Pitch-Yaw calculated by Fusion Algoritm */
+void normalizeRollPitchYawFusion(float roll_fus_rad, float pitch_fus_rad, float yaw_fus_rad);
+
+/* Save Roll-Pitch-Yaw calculated by Fusion Algorithm in the output file */
+void saveRollPitchYawFusionInOutputFile (float roll_fus_deg, float pitch_fus_deg, float yaw_fus_deg, float roll_fus_rad, float pitch_fus_rad, float yaw_fus_rad);
+
+/* Save Roll-Pitch-Yaw calculated by Madgwick Algorithm in the output file */
 void saveRollPitchYawMadgwickInOutputFile (float roll_mad_deg, float pitch_mad_deg, float yaw_mad_deg, float roll_mad_rad, float pitch_mad_rad, float yaw_mad_rad);
 
 /* Save Roll-Pitch-Yaw calculated by Mahony Algorithm in the output file */
