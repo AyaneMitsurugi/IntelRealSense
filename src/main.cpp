@@ -201,7 +201,7 @@ void saveRollPitchYawMahonyInOutputFile (float roll_mah_deg, float pitch_mah_deg
 /* Save quaternions for all Algorithms in the output file */
 void saveQuaternionsInOutputFile(int sample_idx, float fus_qx, float fus_qy, float fus_qz, float fus_qw, float mad_qx, float mad_qy, float mad_qz, float mad_qw, float mah_qx, float mah_qy, float mah_qz, float mah_qw) {
 	if (out_quaternion.is_open()) {
-        out_euler << sample_idx << ",";
+        out_quaternion << sample_idx << ",";
         out_quaternion << std::setprecision(precision) << std::fixed << fus_qx << "," << fus_qy << "," << fus_qz << "," << fus_qw << ",";
         out_quaternion << std::setprecision(precision) << std::fixed << mad_qx << "," << mad_qy << "," << mad_qz << "," << mad_qw << ",";
         out_quaternion << std::setprecision(precision) << std::fixed << mah_qx << "," << mah_qy << "," << mah_qz << "," << mah_qw << std::endl;
