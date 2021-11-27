@@ -18,19 +18,19 @@
 
 /* EXTERNAL VARIABLES */
 // Gyroscope
-extern float gx;
-extern float gy;
-extern float gz;
+extern float gx_rad;
+extern float gy_rad;
+extern float gz_rad;
 
 // Accelerometer
-extern float ax;
-extern float ay;
-extern float az;
+extern float ax_rad;
+extern float ay_rad;
+extern float az_rad;
 
 // Gyroscope - angular velocity for Fusion Algorithm [deg/s]
-extern float fusion_gx;
-extern float fusion_gy;
-extern float fusion_gz;
+extern float fusion_gx_deg;
+extern float fusion_gy_deg;
+extern float fusion_gz_deg;
 
 // Accelerometer - angular acceleration for Fusion Algorithm [g]
 extern float fusion_ax;
@@ -44,10 +44,6 @@ extern float mz;
 
 // Common
 extern float precision;
-
-extern float roll;
-extern float pitch;
-extern float yaw;
 
 /* AHRS Fusion-related parameters */
 extern FusionBias fusionBias;
@@ -94,11 +90,11 @@ void saveHeadersInOutputFile(void);
 void saveTransVelInOutputFile(int sample_idx, float trans_x, float trans_y, float trans_z, float vel_x, float vel_y, float vel_z);
 
 /* Save gyroscope's and accelerometer's raw data in the output file */
-void saveGyroAccInOutputFile(float gx, float gy, float gz, float ax, float ay, float az);
+void saveGyroAccInOutputFile(float gx_rad, float gy_rad, float gz_rad, float ax_rad, float ay_rad, float az_rad);
 
 /* Convert rad/s^2 to g*/
 /* https://stackoverflow.com/questions/6291931/how-to-calculate-g-force-using-x-y-z-values-from-the-accelerometer-in-android/44421684 */
-void convertAccForFusion(float ax, float ay, float az);
+void convertAccForFusion(float ax_rad, float ay_rad, float az_rad);
 
 /* Normalize Roll-Pitch-Yaw calculated by Fusion Algoritm */
 void normalizeRollPitchYawFusion(float roll_fus_rad, float pitch_fus_rad, float yaw_fus_rad);
@@ -111,3 +107,6 @@ void saveRollPitchYawMadgwickInOutputFile (float roll_mad_deg, float pitch_mad_d
 
 /* Save Roll-Pitch-Yaw calculated by Mahony Algorithm in the output file */
 void saveRollPitchYawMahonyInOutputFile (float roll_mah_deg, float pitch_mah_deg, float yaw_mah_deg, float roll_mah_rad, float pitch_mah_rad, float yaw_mah_rad);
+
+/* Save quaternions for all Algorithms in the output file */
+void saveQuaternionsInOutputFile(float fus_qx, float fus_qy, float fus_qz, float fus_qw, float mad_qx, float mad_qy, float mad_qz, float mad_qw, float mah_qx, float mah_qy, float mah_qz, float mah_qw);
