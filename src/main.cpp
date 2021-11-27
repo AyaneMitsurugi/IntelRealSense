@@ -152,9 +152,9 @@ void convertAccForFusion(float ax_rad, float ay_rad, float az_rad) {
     fusion_az = FusionRadiansToDegrees(az_rad);
 
     // Secondly, divide by g = 9.81 to convert deg/s^2 to g
-    fusion_ax /= g;
-    fusion_ay /= g;
-    fusion_az /= g;
+    fusion_ax = fusion_ax / g;
+    fusion_ay = fusion_ay / g;
+    fusion_az = fusion_az / g;
 }
 
 /* Save Roll-Pitch-Yaw calculated by all Fusion Algorithm in the output file */
@@ -297,14 +297,14 @@ int main()
 
             FusionEulerAngles eulerAngles = FusionQuaternionToEulerAngles(FusionQuaternion);
 
-            roll_fus_rad  = eulerAngles.angle.roll;
-            pitch_fus_rad = eulerAngles.angle.pitch;
-            yaw_fus_rad   = eulerAngles.angle.yaw;
+            roll_fus_deg  = eulerAngles.angle.roll;
+            pitch_fus_deg = eulerAngles.angle.pitch;
+            yaw_fus_deg   = eulerAngles.angle.yaw;
 
-            // Convert [rad] -> [degrees]
-            roll_fus_deg  = FusionRadiansToDegrees(roll_fus_rad);
-            pitch_fus_deg = FusionRadiansToDegrees(pitch_fus_rad);
-            yaw_fus_deg   = FusionRadiansToDegrees(yaw_fus_rad);
+            // Convert [degrees] -> [rad]
+            roll_fus_rad  = FusionRadiansToDegrees(roll_fus_deg);
+            pitch_fus_rad = FusionRadiansToDegrees(pitch_fus_deg);
+            yaw_fus_rad   = FusionRadiansToDegrees(yaw_fus_deg);
 
             saveRollPitchYawFusionInOutputFile (roll_fus_deg, pitch_fus_deg, yaw_fus_deg, roll_fus_rad, pitch_fus_rad,  yaw_fus_rad);
 
