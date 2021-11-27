@@ -17,22 +17,27 @@
 #include "AHRS/Common/CommonAHRS.hpp"
 
 /* EXTERNAL VARIABLES */
-// Gyroscope
+// Gyroscope [rad/s]
 extern float gx_rad;
 extern float gy_rad;
 extern float gz_rad;
 
-// Accelerometer
+// Accelerometer [rad/s^2]
 extern float ax_rad;
 extern float ay_rad;
 extern float az_rad;
 
-// Gyroscope - angular velocity for Fusion Algorithm [deg/s]
-extern float fusion_gx_deg;
-extern float fusion_gy_deg;
-extern float fusion_gz_deg;
+// Gyroscope [deg/s]
+extern float gx_deg;
+extern float gy_deg;
+extern float gz_deg;
 
-// Accelerometer - angular acceleration for Fusion Algorithm [g]
+// Accelerometer [deg/s^2]
+extern float ax_deg;
+extern float ay_deg;
+extern float az_deg;
+
+// Accelerometer for Fusion Algorithm [g-force]
 extern float fusion_ax;
 extern float fusion_ay;
 extern float fusion_az;
@@ -82,34 +87,33 @@ extern float yaw_mah_rad;
 /* FUNCTIONS */
 /* Return buffer of current date and time in YYYY-MM-DD-HH:mm:ss format */
 const std::string currentDateTime();
-
-/* Save headers in the out_euler file */
-void saveHeadersInOutEulerFile(void);
-
 /* Save headers in the out_trans_vel file */
-void saveHeadersInOutTransVelfile(void);
+void saveHeadersInOutTransVelFile(void);
+
+/* Save headers in the out_gyro_acc file */
+void saveHeadersInOutGyroAccFile(void);
+
+/* Save headers in the out_roll_pitch_yaw file */
+void saveHeadersInOutRollPitchYawFile(void);
 
 /* Save headers in the out_quaternion file */
 void saveHeadersInOutQuaternionFile(void);
 
 /* Save sample index, translation and velocity in the output file */
 void saveTransVelInOutputFile(int sample_idx, float trans_x, float trans_y, float trans_z, float vel_x, float vel_y, float vel_z);
+/* Save gyroscope's and accelerometer's data in the output file */
+void saveGyroAccInOutputFile(int sample_idx, float gx_deg, float gy_deg, float gz_deg, float gx_rad, float gy_rad, float gz_rad, float ax_deg, float ay_deg, float az_deg, float ax_rad, float ay_rad, float az_rad);
+/* Save Roll-Pitch-Yaw calculated by all Fusion Algorithm in the output file */
+void saveRollPitchYawFusionInOutputFile (int sample_idx, float roll_fus_deg, float pitch_fus_deg, float yaw_fus_deg, float roll_fus_rad, float pitch_fus_rad, float yaw_fus_rad);
 
-/* Save gyroscope's and accelerometer's raw data in the output file */
-void saveGyroAccInOutputFile(int sample_idx, float gx_rad, float gy_rad, float gz_rad, float ax_rad, float ay_rad, float az_rad);
-
-/* Convert rad/s^2 to g*/
-/* https://stackoverflow.com/questions/6291931/how-to-calculate-g-force-using-x-y-z-values-from-the-accelerometer-in-android/44421684 */
-void convertAccForFusion(float ax_rad, float ay_rad, float az_rad);
-
-/* Save Roll-Pitch-Yaw calculated by Fusion Algorithm in the output file */
-void saveRollPitchYawFusionInOutputFile (float roll_fus_deg, float pitch_fus_deg, float yaw_fus_deg, float roll_fus_rad, float pitch_fus_rad, float yaw_fus_rad);
-
-/* Save Roll-Pitch-Yaw calculated by Madgwick Algorithm in the output file */
+/* Save Roll-Pitch-Yaw calculated by all Madgwick Algorithm in the output file */
 void saveRollPitchYawMadgwickInOutputFile (float roll_mad_deg, float pitch_mad_deg, float yaw_mad_deg, float roll_mad_rad, float pitch_mad_rad, float yaw_mad_rad);
-
 /* Save Roll-Pitch-Yaw calculated by Mahony Algorithm in the output file */
 void saveRollPitchYawMahonyInOutputFile (float roll_mah_deg, float pitch_mah_deg, float yaw_mah_deg, float roll_mah_rad, float pitch_mah_rad, float yaw_mah_rad);
 
 /* Save quaternions for all Algorithms in the output file */
 void saveQuaternionsInOutputFile(int sample_idx, float fus_qx, float fus_qy, float fus_qz, float fus_qw, float mad_qx, float mad_qy, float mad_qz, float mad_qw, float mah_qx, float mah_qy, float mah_qz, float mah_qw);
+
+/* Convert deg/s^2 to g-force */
+/* https://stackoverflow.com/questions/6291931/how-to-calculate-g-force-using-x-y-z-values-from-the-accelerometer-in-android/44421684 */
+void convertAccForFusion(float ax_deg, float ay_deg, float az_deg);

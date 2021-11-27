@@ -5,25 +5,31 @@
 
 // Output file with IMU-related data
 std::ofstream out_trans_vel;
-std::ofstream out_euler;
+std::ofstream out_gyro_acc;
+std::ofstream out_roll_pitch_yaw;
 std::ofstream out_quaternion;
 
-// Gyroscope - angular velocity [rad/s]
+// Gyroscope [rad/s]
 float gx_rad = 0.0;
 float gy_rad = 0.0;
 float gz_rad = 0.0;
 
-// Gyroscope - angular velocity for Fusion Algorithm [deg/s]
-float fusion_gx_deg = 0.0;
-float fusion_gy_deg = 0.0;
-float fusion_gz_deg = 0.0;
-
-// Accelerometer - angular acceleration [rad/s^2]
+// Accelerometer [rad/s^2]
 float ax_rad = 0.0;
 float ay_rad = 0.0;
 float az_rad = 0.0;
 
-// Accelerometer - angular acceleration for Fusion Algorithm [g-force]
+// Gyroscope [deg/s]
+float gx_deg = 0.0;
+float gy_deg = 0.0;
+float gz_deg = 0.0;
+
+// Accelerometer [deg/s^2]
+float ax_deg = 0.0;
+float ay_deg = 0.0;
+float az_deg = 0.0;
+
+// Accelerometer for Fusion Algorithm [g-force]
 float fusion_ax = 0.0;
 float fusion_ay = 0.0;
 float fusion_az = 0.0;
@@ -106,27 +112,36 @@ const std::string currentDateTime() {
     return buffer;
 };
 
-/* Save headers in the out_euler file */
-void saveHeadersInOutEulerFile(void) {
-    if (out_euler.is_open()) {
-        out_euler << "Index,";
-        out_euler << "Angular velocity X [rad/s],Angular velocity Y [rad/s],Angular velocity Z [rad/s],";                 // Gyroscope's raw data
-        out_euler << "Angular acceleration X [rad/s^2],Angular acceleration Y [rad/s^2],Angular acceleration Z [rad/s^2],"; // Accelerometer's raw data
-        out_euler << "Fusion Roll [degrees],Fusion Pitch [degrees],Fusion Yaw [degrees],";
-        out_euler << "Fusion Roll [rad],Fusion Pitch [rad],Fusion Yaw [rad],";
-        out_euler << "Madgwick Roll [degrees],Madgwick Pitch [degrees],Madgwick Yaw [degrees],";
-        out_euler << "Madgwick Roll [rad],Madgwick Pitch [rad],Madgwick Yaw [rad],";
-        out_euler << "Mahony Roll [degrees],Mahony Pitch [degrees],Mahony Yaw [degrees],";
-        out_euler << "Mahony Roll [rad],Mahony Pitch [rad],Mahony Yaw [rad]" << std::endl;
-    }
-}
-
 /* Save headers in the out_trans_vel file */
 void saveHeadersInOutTransVelFile(void) {
     if (out_trans_vel.is_open()) {
         out_trans_vel << "Index,";
         out_trans_vel << "Translation X [m],Translation Y [m],Translation Z [m],";
         out_trans_vel << "Velocity X [m/s],Velocity Y [m/s],Velocity Z [m/s]," << std::endl;
+    }
+}
+
+/* Save headers in the out_gyro_acc file */
+void saveHeadersInOutGyroAccFile(void) {
+    if (out_gyro_acc.is_open()) {
+        out_gyro_acc << "Index,";
+        out_gyro_acc << "Angular velocity X [deg/s],Angular velocity Y [deg/s],Angular velocity Z [deg/s],";
+        out_gyro_acc << "Angular velocity X [rad/s],Angular velocity Y [rad/s],Angular velocity Z [rad/s],";
+        out_gyro_acc << "Angular acceleration X [deg/s^2],Angular acceleration Y [deg/s^2],Angular acceleration Z [deg/s^2],";
+        out_gyro_acc << "Angular acceleration X [rad/s^2],Angular acceleration Y [rad/s^2],Angular acceleration Z [rad/s^2]" << std::endl;
+    }
+}
+
+/* Save headers in the out_roll_pitch_yaw file */
+void saveHeadersInOutRollPitchYawFile(void) {
+    if (out_roll_pitch_yaw.is_open()) {
+        out_roll_pitch_yaw << "Index,";
+        out_roll_pitch_yaw << "Fusion Roll [degrees],Fusion Pitch [degrees],Fusion Yaw [degrees],";
+        out_roll_pitch_yaw << "Fusion Roll [rad],Fusion Pitch [rad],Fusion Yaw [rad],";
+        out_roll_pitch_yaw << "Madgwick Roll [degrees],Madgwick Pitch [degrees],Madgwick Yaw [degrees],";
+        out_roll_pitch_yaw << "Madgwick Roll [rad],Madgwick Pitch [rad],Madgwick Yaw [rad],";
+        out_roll_pitch_yaw << "Mahony Roll [degrees],Mahony Pitch [degrees],Mahony Yaw [degrees],";
+        out_roll_pitch_yaw << "Mahony Roll [rad],Mahony Pitch [rad],Mahony Yaw [rad]" << std::endl;
     }
 }
 
@@ -149,52 +164,39 @@ void saveTransVelInOutputFile(int sample_idx, float trans_x, float trans_y, floa
     }
 }
 
-/* Save gyroscope's and accelerometer's raw data in the output file */
-void saveGyroAccInOutputFile(int sample_idx, float gx_rad, float gy_rad, float gz_rad, float ax_rad, float ay_rad, float az_rad) {
-    if (out_euler.is_open()) {
-        out_euler << sample_idx << ",";
-	    out_euler << std::setprecision(precision) << std::fixed << gx_rad << "," << gy_rad << "," << gz_rad << ",";
-	    out_euler << std::setprecision(precision) << std::fixed << ax_rad << "," << ay_rad << "," << az_rad << ",";
+/* Save gyroscope's and accelerometer's data in the output file */
+void saveGyroAccInOutputFile(int sample_idx, float gx_deg, float gy_deg, float gz_deg, float gx_rad, float gy_rad, float gz_rad, float ax_deg, float ay_deg, float az_deg, float ax_rad, float ay_rad, float az_rad) {
+    if (out_gyro_acc.is_open()) {
+        out_gyro_acc << sample_idx << ",";
+	    out_gyro_acc << std::setprecision(precision) << std::fixed << gx_deg << "," << gy_deg << "," << gz_deg << ",";
+        out_gyro_acc << std::setprecision(precision) << std::fixed << gx_rad << "," << gy_rad << "," << gz_rad << ",";
+	    out_gyro_acc << std::setprecision(precision) << std::fixed << ax_deg << "," << ay_deg << "," << az_deg << ",";
+        out_gyro_acc << std::setprecision(precision) << std::fixed << ax_rad << "," << ay_rad << "," << az_rad << std::endl;
     }
 }
 
-/* Convert rad/s^2 to g */
-/* https://stackoverflow.com/questions/6291931/how-to-calculate-g-force-using-x-y-z-values-from-the-accelerometer-in-android/44421684 */
-void convertAccForFusion(float ax_rad, float ay_rad, float az_rad) {
-    const float g = 9.81;
-
-    // Firstly, convert rad/s^2 to deg/s^2
-    fusion_ax = FusionRadiansToDegrees(ax_rad);
-    fusion_ay = FusionRadiansToDegrees(ay_rad);
-    fusion_az = FusionRadiansToDegrees(az_rad);
-
-    // Secondly, divide by g = 9.81 to convert deg/s^2 to g
-    fusion_ax = fusion_ax / g;
-    fusion_ay = fusion_ay / g;
-    fusion_az = fusion_az / g;
-}
-
 /* Save Roll-Pitch-Yaw calculated by all Fusion Algorithm in the output file */
-void saveRollPitchYawFusionInOutputFile (float roll_fus_deg, float pitch_fus_deg, float yaw_fus_deg, float roll_fus_rad, float pitch_fus_rad, float yaw_fus_rad) {
-	if (out_euler.is_open()) {
-        out_euler << std::setprecision(precision) << std::fixed << roll_fus_deg << "," << pitch_fus_deg << "," << yaw_fus_deg << ",";
-        out_euler << std::setprecision(precision) << std::fixed << roll_fus_rad << "," << pitch_fus_rad << "," << yaw_fus_rad << ",";
+void saveRollPitchYawFusionInOutputFile (int sample_idx, float roll_fus_deg, float pitch_fus_deg, float yaw_fus_deg, float roll_fus_rad, float pitch_fus_rad, float yaw_fus_rad) {
+	if (out_roll_pitch_yaw.is_open()) {
+        out_roll_pitch_yaw << sample_idx << ",";
+        out_roll_pitch_yaw << std::setprecision(precision) << std::fixed << roll_fus_deg << "," << pitch_fus_deg << "," << yaw_fus_deg << ",";
+        out_roll_pitch_yaw << std::setprecision(precision) << std::fixed << roll_fus_rad << "," << pitch_fus_rad << "," << yaw_fus_rad << ",";
     }
 }
 
 /* Save Roll-Pitch-Yaw calculated by all Madgwick Algorithm in the output file */
 void saveRollPitchYawMadgwickInOutputFile (float roll_mad_deg, float pitch_mad_deg, float yaw_mad_deg, float roll_mad_rad, float pitch_mad_rad, float yaw_mad_rad) {
-	if (out_euler.is_open()) {
-        out_euler << std::setprecision(precision) << std::fixed << roll_mad_deg << "," << pitch_mad_deg << "," << yaw_mad_deg << ",";
-        out_euler << std::setprecision(precision) << std::fixed << roll_mad_rad << "," << pitch_mad_rad << "," << yaw_mad_rad << ",";
+	if (out_roll_pitch_yaw.is_open()) {
+        out_roll_pitch_yaw << std::setprecision(precision) << std::fixed << roll_mad_deg << "," << pitch_mad_deg << "," << yaw_mad_deg << ",";
+        out_roll_pitch_yaw << std::setprecision(precision) << std::fixed << roll_mad_rad << "," << pitch_mad_rad << "," << yaw_mad_rad << ",";
     }
 }
 
 /* Save Roll-Pitch-Yaw calculated by Mahony Algorithm in the output file */
 void saveRollPitchYawMahonyInOutputFile (float roll_mah_deg, float pitch_mah_deg, float yaw_mah_deg, float roll_mah_rad, float pitch_mah_rad, float yaw_mah_rad) {
-	if (out_euler.is_open()) {
-        out_euler << std::setprecision(precision) << std::fixed << roll_mah_deg << "," << pitch_mah_deg << "," << yaw_mah_deg << ",";
-        out_euler << std::setprecision(precision) << std::fixed << roll_mah_rad << "," << pitch_mah_rad << "," << yaw_mah_rad << std::endl;
+	if (out_roll_pitch_yaw.is_open()) {
+        out_roll_pitch_yaw << std::setprecision(precision) << std::fixed << roll_mah_deg << "," << pitch_mah_deg << "," << yaw_mah_deg << ",";
+        out_roll_pitch_yaw << std::setprecision(precision) << std::fixed << roll_mah_rad << "," << pitch_mah_rad << "," << yaw_mah_rad << std::endl;
     }
 }
 
@@ -208,6 +210,17 @@ void saveQuaternionsInOutputFile(int sample_idx, float fus_qx, float fus_qy, flo
     }
 }
 
+/* Convert deg/s^2 to g-force */
+/* https://stackoverflow.com/questions/6291931/how-to-calculate-g-force-using-x-y-z-values-from-the-accelerometer-in-android/44421684 */
+void convertAccForFusion(float ax_deg, float ay_deg, float az_deg) {
+    const float g = 9.81;
+
+    // Divide accelerometer's measurement by g = 9.81 to convert m/s^2 to g
+    fusion_ax = ax_deg / g;
+    fusion_ay = ay_deg / g;
+    fusion_az = az_deg / g;
+}
+
 /* MAIN */
 int main()
 {
@@ -216,10 +229,11 @@ int main()
     // Initialize sample index
     int sample_idx = 1;
 
-    // Create file with currentdate and time in its name
+    // Create output files with data
     std::string buffer = currentDateTime();
-    out_euler.open (buffer);
     out_trans_vel.open("../output_data/trans_vel");
+    out_gyro_acc.open ("../output_data/gyro_acc");
+    out_roll_pitch_yaw.open (buffer);
     out_quaternion.open("../output_data/out_quaternion");
 
     /* TRY-CATCH */
@@ -243,8 +257,9 @@ int main()
         // Start pipeline with chosen configuration
         pipe.start(cfg);
 
-        saveHeadersInOutEulerFile();
         saveHeadersInOutTransVelFile();
+        saveHeadersInOutGyroAccFile();
+        saveHeadersInOutRollPitchYawFile();
         saveHeadersInOutQuaternionFile();
 
         /* AHRS FUSION-RELATED FUNCTIONS */
@@ -275,26 +290,29 @@ int main()
             ay_rad = pose_data.angular_acceleration.y;
             az_rad = pose_data.angular_acceleration.z;
 
+            // Convert [rad] -> [degrees]
+            gx_deg  = FusionRadiansToDegrees(gx_rad);
+            gy_deg  = FusionRadiansToDegrees(gy_rad);
+            gz_deg  = FusionRadiansToDegrees(gz_rad);
+            ax_deg  = FusionRadiansToDegrees(ax_rad);
+            ay_deg  = FusionRadiansToDegrees(ay_rad);
+            az_deg  = FusionRadiansToDegrees(az_rad);
+
             saveTransVelInOutputFile(sample_idx, pose_data.translation.x, pose_data.translation.y , pose_data.translation.z, pose_data.velocity.x, pose_data.velocity.y, pose_data.velocity.z);
-            saveGyroAccInOutputFile(sample_idx, gx_rad, gy_rad, gz_rad, ax_rad, ay_rad, az_rad);
+            saveGyroAccInOutputFile(sample_idx, gx_deg, gy_deg, gz_deg, gx_rad, gy_rad, gz_rad, ax_deg, ay_deg, az_deg, ax_rad, ay_rad, az_rad);
 
             /* AHRS FUSION-RELATED FUNCTIONS */
 
-            // Convert [rad] -> [degrees]
-            fusion_gx_deg  = FusionRadiansToDegrees(gx_rad);
-            fusion_gy_deg  = FusionRadiansToDegrees(gy_rad);
-            fusion_gz_deg  = FusionRadiansToDegrees(gz_rad);
-
 	        // Calibrate gyroscope
             FusionVector3 uncalibratedGyroscope = {
-                uncalibratedGyroscope.axis.x = fusion_gx_deg,
-                uncalibratedGyroscope.axis.y = fusion_gy_deg,
-                uncalibratedGyroscope.axis.z = fusion_gz_deg,
+                uncalibratedGyroscope.axis.x = gx_deg,
+                uncalibratedGyroscope.axis.y = gy_deg,
+                uncalibratedGyroscope.axis.z = gz_deg,
             };
             FusionVector3 calibratedGyroscope = FusionCalibrationInertial(uncalibratedGyroscope, FUSION_ROTATION_MATRIX_IDENTITY, gyroscopeSensitivity, FUSION_VECTOR3_ZERO);
 
-            // Accelometer - convert rad/s^2 to deg/s^2 and then to g
-            convertAccForFusion(ax_rad, ay_rad, az_rad);
+            // Convert [deg/s^2] -> [g-force]
+            convertAccForFusion(ax_deg, ay_deg, az_deg);
 
 	        // Calibrate accelerometer
             FusionVector3 uncalibratedAccelerometer = {
@@ -324,11 +342,11 @@ int main()
             yaw_fus_deg   = eulerAngles.angle.yaw;
 
             // Convert [degrees] -> [rad]
-            roll_fus_rad  = FusionRadiansToDegrees(roll_fus_deg);
-            pitch_fus_rad = FusionRadiansToDegrees(pitch_fus_deg);
-            yaw_fus_rad   = FusionRadiansToDegrees(yaw_fus_deg);
+            roll_fus_rad  = FusionDegreesToRadians(roll_fus_deg);
+            pitch_fus_rad = FusionDegreesToRadians(pitch_fus_deg);
+            yaw_fus_rad   = FusionDegreesToRadians(yaw_fus_deg);
 
-            saveRollPitchYawFusionInOutputFile (roll_fus_deg, pitch_fus_deg, yaw_fus_deg, roll_fus_rad, pitch_fus_rad,  yaw_fus_rad);
+            saveRollPitchYawFusionInOutputFile (sample_idx, roll_fus_deg, pitch_fus_deg, yaw_fus_deg, roll_fus_rad, pitch_fus_rad,  yaw_fus_rad);
 
             /* AHRS MADGWICK-RELATED FUNCTIONS */
             MadgwickGyroscopeAccelerometer(gx_rad, gy_rad, gz_rad, ax_rad, ay_rad, az_rad);
@@ -378,8 +396,9 @@ int main()
             // Increase sample index
             sample_idx++;
         } // END OF: while (true)
-        out_euler.close ();
         out_trans_vel.close();
+        out_gyro_acc.close ();
+        out_roll_pitch_yaw.close ();
         out_quaternion.close();
         return EXIT_SUCCESS;
     } // END OF: try
