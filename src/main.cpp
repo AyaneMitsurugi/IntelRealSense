@@ -134,10 +134,10 @@ void saveTransVelInOutputFile(int sample_idx, float trans_x, float trans_y, floa
 }
 
 /* Save gyroscope's and accelerometer's raw data in the output file */
-void saveGyroAccInOutputFile(float gx, float gy, float gz, float ax, float ay, float az) {
+void saveGyroAccInOutputFile(float gx_rad, float gy_rad, float gz_rad, float ax_rad, float ay_rad, float az_rad) {
     if (outfile.is_open()) {
-	    outfile << std::setprecision(precision) << std::fixed << gx << "," << gy << "," << gz << ",";
-	    outfile << std::setprecision(precision) << std::fixed << ax << "," << ay << "," << az << ",";
+	    outfile << std::setprecision(precision) << std::fixed << gx_rad << "," << gy_rad << "," << gz_rad << ",";
+	    outfile << std::setprecision(precision) << std::fixed << ax_rad << "," << ay_rad << "," << az_rad << ",";
     }
 }
 
@@ -155,13 +155,6 @@ void convertAccForFusion(float ax_rad, float ay_rad, float az_rad) {
     fusion_ax /= g;
     fusion_ay /= g;
     fusion_az /= g;
-}
-
-/* Normalize Roll-Pitch-Yaw calculated by Fusion Algoritm */
-void normalizeRollPitchYawFusion(float roll_rad, float pitch_rad, float yaw_rad) {
-    roll_fus_rad  = fmod(roll_rad, (2*M_PI));
-    pitch_fus_rad = fmod(pitch_rad, (2*M_PI));
-    yaw_fus_rad   = fmod(yaw_rad, (2*M_PI));
 }
 
 /* Save Roll-Pitch-Yaw calculated by all Fusion Algorithm in the output file */
@@ -307,8 +300,6 @@ int main()
             roll_fus_rad  = eulerAngles.angle.roll;
             pitch_fus_rad = eulerAngles.angle.pitch;
             yaw_fus_rad   = eulerAngles.angle.yaw;
-
-            normalizeRollPitchYawFusion(roll_fus_rad, pitch_fus_rad, yaw_fus_rad);
 
             // Convert [rad] -> [degrees]
             roll_fus_deg  = FusionRadiansToDegrees(roll_fus_rad);

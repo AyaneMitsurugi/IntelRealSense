@@ -96,9 +96,6 @@ void saveGyroAccInOutputFile(float gx_rad, float gy_rad, float gz_rad, float ax_
 /* https://stackoverflow.com/questions/6291931/how-to-calculate-g-force-using-x-y-z-values-from-the-accelerometer-in-android/44421684 */
 void convertAccForFusion(float ax_rad, float ay_rad, float az_rad);
 
-/* Normalize Roll-Pitch-Yaw calculated by Fusion Algoritm */
-void normalizeRollPitchYawFusion(float roll_fus_rad, float pitch_fus_rad, float yaw_fus_rad);
-
 /* Save Roll-Pitch-Yaw calculated by Fusion Algorithm in the output file */
 void saveRollPitchYawFusionInOutputFile (float roll_fus_deg, float pitch_fus_deg, float yaw_fus_deg, float roll_fus_rad, float pitch_fus_rad, float yaw_fus_rad);
 
