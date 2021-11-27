@@ -4,7 +4,9 @@
 /* VARIABLES */
 
 // Output file with IMU-related data
-std::ofstream outfile;
+std::ofstream out_trans_vel;
+std::ofstream out_euler;
+std::ofstream out_quaternion;
 
 // Gyroscope - angular velocity [rad/s]
 float gx_rad = 0.0;
@@ -104,40 +106,55 @@ const std::string currentDateTime() {
     return buffer;
 };
 
-/* Save headers in the output file */
-void saveHeadersInOutputFile(void) {
-    if (outfile.is_open()) {
-        outfile << "Index,";
-        outfile << "Translation X [m],Translation Y [m],Translation Z [m],";
-        outfile << "Velocity X [m/s],Velocity Y [m/s],Velocity Z [m/s],";
-        outfile << "Angular velocity X [rad/s],Angular velocity Y [rad/s],Angular velocity Z [rad/s],";                 // Gyroscope's raw data
-        outfile << "Angular acceleration X [rad/s^2],Angular acceleration Y [rad/s^2],Angular acceleration Z [rad/s^2],"; // Accelerometer's raw data
-        outfile << "Fusion Roll [degrees],Fusion Pitch [degrees],Fusion Yaw [degrees],";
-        outfile << "Fusion Roll [rad],Fusion Pitch [rad],Fusion Yaw [rad],";
-        outfile << "Madgwick Roll [degrees],Madgwick Pitch [degrees],Madgwick Yaw [degrees],";
-        outfile << "Madgwick Roll [rad],Madgwick Pitch [rad],Madgwick Yaw [rad],";
-        outfile << "Mahony Roll [degrees],Mahony Pitch [degrees],Mahony Yaw [degrees],";
-        outfile << "Mahony Roll [rad],Mahony Pitch [rad],Mahony Yaw [rad],";
-        outfile << "Fusion qx,Fusion qy,Fusion qz,Fusion qw,";
-        outfile << "Madgwick qx,Madgwick qy,Madgwick qz,Madgwick qw,";
-        outfile << "Mahony qx,Mahony qy,Mahony qz,Mahony qw" << std::endl;
+/* Save headers in the out_euler file */
+void saveHeadersInOutEulerFile(void) {
+    if (out_euler.is_open()) {
+        out_euler << "Index,";
+        out_euler << "Angular velocity X [rad/s],Angular velocity Y [rad/s],Angular velocity Z [rad/s],";                 // Gyroscope's raw data
+        out_euler << "Angular acceleration X [rad/s^2],Angular acceleration Y [rad/s^2],Angular acceleration Z [rad/s^2],"; // Accelerometer's raw data
+        out_euler << "Fusion Roll [degrees],Fusion Pitch [degrees],Fusion Yaw [degrees],";
+        out_euler << "Fusion Roll [rad],Fusion Pitch [rad],Fusion Yaw [rad],";
+        out_euler << "Madgwick Roll [degrees],Madgwick Pitch [degrees],Madgwick Yaw [degrees],";
+        out_euler << "Madgwick Roll [rad],Madgwick Pitch [rad],Madgwick Yaw [rad],";
+        out_euler << "Mahony Roll [degrees],Mahony Pitch [degrees],Mahony Yaw [degrees],";
+        out_euler << "Mahony Roll [rad],Mahony Pitch [rad],Mahony Yaw [rad]" << std::endl;
+    }
+}
+
+/* Save headers in the out_trans_vel file */
+void saveHeadersInOutTransVelFile(void) {
+    if (out_trans_vel.is_open()) {
+        out_trans_vel << "Index,";
+        out_trans_vel << "Translation X [m],Translation Y [m],Translation Z [m],";
+        out_trans_vel << "Velocity X [m/s],Velocity Y [m/s],Velocity Z [m/s]," << std::endl;
+    }
+}
+
+/* Save headers in the out_quaternion file */
+void saveHeadersInOutQuaternionFile(void) {
+    if (out_quaternion.is_open()) {
+        out_quaternion << "Index,";
+        out_quaternion << "Fusion qx,Fusion qy,Fusion qz,Fusion qw,";
+        out_quaternion << "Madgwick qx,Madgwick qy,Madgwick qz,Madgwick qw,";
+        out_quaternion << "Mahony qx,Mahony qy,Mahony qz,Mahony qw" << std::endl;
     }
 }
 
 /* Save sample index, translation and velocity in the output file */
 void saveTransVelInOutputFile(int sample_idx, float trans_x, float trans_y, float trans_z, float vel_x, float vel_y, float vel_z) {
-    if (outfile.is_open()) {
-        outfile << sample_idx << ",";
-        outfile << std::setprecision(precision) << std::fixed << trans_x << "," << trans_y << "," << trans_z << ",";
-        outfile << std::setprecision(precision) << std::fixed << vel_x   << "," << vel_y   << "," << vel_z   << ",";
+    if (out_trans_vel.is_open()) {
+        out_trans_vel << sample_idx << ",";
+        out_trans_vel << std::setprecision(precision) << std::fixed << trans_x << "," << trans_y << "," << trans_z << ",";
+        out_trans_vel << std::setprecision(precision) << std::fixed << vel_x   << "," << vel_y   << "," << vel_z   << std::endl;
     }
 }
 
 /* Save gyroscope's and accelerometer's raw data in the output file */
-void saveGyroAccInOutputFile(float gx_rad, float gy_rad, float gz_rad, float ax_rad, float ay_rad, float az_rad) {
-    if (outfile.is_open()) {
-	    outfile << std::setprecision(precision) << std::fixed << gx_rad << "," << gy_rad << "," << gz_rad << ",";
-	    outfile << std::setprecision(precision) << std::fixed << ax_rad << "," << ay_rad << "," << az_rad << ",";
+void saveGyroAccInOutputFile(int sample_idx, float gx_rad, float gy_rad, float gz_rad, float ax_rad, float ay_rad, float az_rad) {
+    if (out_euler.is_open()) {
+        out_euler << sample_idx << ",";
+	    out_euler << std::setprecision(precision) << std::fixed << gx_rad << "," << gy_rad << "," << gz_rad << ",";
+	    out_euler << std::setprecision(precision) << std::fixed << ax_rad << "," << ay_rad << "," << az_rad << ",";
     }
 }
 
@@ -159,34 +176,35 @@ void convertAccForFusion(float ax_rad, float ay_rad, float az_rad) {
 
 /* Save Roll-Pitch-Yaw calculated by all Fusion Algorithm in the output file */
 void saveRollPitchYawFusionInOutputFile (float roll_fus_deg, float pitch_fus_deg, float yaw_fus_deg, float roll_fus_rad, float pitch_fus_rad, float yaw_fus_rad) {
-	if (outfile.is_open()) {
-        outfile << std::setprecision(precision) << std::fixed << roll_fus_deg << "," << pitch_fus_deg << "," << yaw_fus_deg << ",";
-        outfile << std::setprecision(precision) << std::fixed << roll_fus_rad << "," << pitch_fus_rad << "," << yaw_fus_rad << ",";
+	if (out_euler.is_open()) {
+        out_euler << std::setprecision(precision) << std::fixed << roll_fus_deg << "," << pitch_fus_deg << "," << yaw_fus_deg << ",";
+        out_euler << std::setprecision(precision) << std::fixed << roll_fus_rad << "," << pitch_fus_rad << "," << yaw_fus_rad << ",";
     }
 }
 
 /* Save Roll-Pitch-Yaw calculated by all Madgwick Algorithm in the output file */
 void saveRollPitchYawMadgwickInOutputFile (float roll_mad_deg, float pitch_mad_deg, float yaw_mad_deg, float roll_mad_rad, float pitch_mad_rad, float yaw_mad_rad) {
-	if (outfile.is_open()) {
-        outfile << std::setprecision(precision) << std::fixed << roll_mad_deg << "," << pitch_mad_deg << "," << yaw_mad_deg << ",";
-        outfile << std::setprecision(precision) << std::fixed << roll_mad_rad << "," << pitch_mad_rad << "," << yaw_mad_rad << ",";
+	if (out_euler.is_open()) {
+        out_euler << std::setprecision(precision) << std::fixed << roll_mad_deg << "," << pitch_mad_deg << "," << yaw_mad_deg << ",";
+        out_euler << std::setprecision(precision) << std::fixed << roll_mad_rad << "," << pitch_mad_rad << "," << yaw_mad_rad << ",";
     }
 }
 
 /* Save Roll-Pitch-Yaw calculated by Mahony Algorithm in the output file */
 void saveRollPitchYawMahonyInOutputFile (float roll_mah_deg, float pitch_mah_deg, float yaw_mah_deg, float roll_mah_rad, float pitch_mah_rad, float yaw_mah_rad) {
-	if (outfile.is_open()) {
-        outfile << std::setprecision(precision) << std::fixed << roll_mah_deg << "," << pitch_mah_deg << "," << yaw_mah_deg << ",";
-        outfile << std::setprecision(precision) << std::fixed << roll_mah_rad << "," << pitch_mah_rad << "," << yaw_mah_rad << ",";
+	if (out_euler.is_open()) {
+        out_euler << std::setprecision(precision) << std::fixed << roll_mah_deg << "," << pitch_mah_deg << "," << yaw_mah_deg << ",";
+        out_euler << std::setprecision(precision) << std::fixed << roll_mah_rad << "," << pitch_mah_rad << "," << yaw_mah_rad << ",";
     }
 }
 
 /* Save quaternions for all Algorithms in the output file */
-void saveQuaternionsInOutputFile(float fus_qx, float fus_qy, float fus_qz, float fus_qw, float mad_qx, float mad_qy, float mad_qz, float mad_qw, float mah_qx, float mah_qy, float mah_qz, float mah_qw) {
-	if (outfile.is_open()) {
-        outfile << std::setprecision(precision) << std::fixed << fus_qx << "," << fus_qy << "," << fus_qz << "," << fus_qw << ",";
-        outfile << std::setprecision(precision) << std::fixed << mad_qx << "," << mad_qy << "," << mad_qz << "," << mad_qw << ",";
-        outfile << std::setprecision(precision) << std::fixed << mah_qx << "," << mah_qy << "," << mah_qz << "," << mah_qw << std::endl;
+void saveQuaternionsInOutputFile(int sample_idx, float fus_qx, float fus_qy, float fus_qz, float fus_qw, float mad_qx, float mad_qy, float mad_qz, float mad_qw, float mah_qx, float mah_qy, float mah_qz, float mah_qw) {
+	if (out_quaternion.is_open()) {
+        out_euler << sample_idx << ",";
+        out_quaternion << std::setprecision(precision) << std::fixed << fus_qx << "," << fus_qy << "," << fus_qz << "," << fus_qw << ",";
+        out_quaternion << std::setprecision(precision) << std::fixed << mad_qx << "," << mad_qy << "," << mad_qz << "," << mad_qw << ",";
+        out_quaternion << std::setprecision(precision) << std::fixed << mah_qx << "," << mah_qy << "," << mah_qz << "," << mah_qw << std::endl;
     }
 }
 
@@ -200,7 +218,9 @@ int main()
 
     // Create file with currentdate and time in its name
     std::string buffer = currentDateTime();
-    outfile.open (buffer);
+    out_euler.open (buffer);
+    out_trans_vel.open("../output_data/trans_vel");
+    out_quaternion.open("../output_data/out_quaternion");
 
     /* TRY-CATCH */
     try {
@@ -223,7 +243,9 @@ int main()
         // Start pipeline with chosen configuration
         pipe.start(cfg);
 
-        saveHeadersInOutputFile();
+        saveHeadersInOutEulerFile();
+        saveHeadersInOutTransVelFile();
+        saveHeadersInOutQuaternionFile();
 
         /* AHRS FUSION-RELATED FUNCTIONS */
 
@@ -254,7 +276,7 @@ int main()
             az_rad = pose_data.angular_acceleration.z;
 
             saveTransVelInOutputFile(sample_idx, pose_data.translation.x, pose_data.translation.y , pose_data.translation.z, pose_data.velocity.x, pose_data.velocity.y, pose_data.velocity.z);
-            saveGyroAccInOutputFile(gx_rad, gy_rad, gz_rad, ax_rad, ay_rad, az_rad);
+            saveGyroAccInOutputFile(sample_idx, gx_rad, gy_rad, gz_rad, ax_rad, ay_rad, az_rad);
 
             /* AHRS FUSION-RELATED FUNCTIONS */
 
@@ -349,14 +371,16 @@ int main()
             yaw_mah_deg   = FusionRadiansToDegrees(yaw_mah_rad);
 
             saveRollPitchYawMahonyInOutputFile(roll_mah_deg, pitch_mah_deg, yaw_mah_deg, roll_mah_rad, pitch_mah_rad, yaw_mah_rad);
-            saveQuaternionsInOutputFile(fus_qx, fus_qy, fus_qz, fus_qw, mad_qx, mad_qy, mad_qz, mad_qw, mah_qx, mah_qy, mah_qz, mah_qw);
+            saveQuaternionsInOutputFile(sample_idx, fus_qx, fus_qy, fus_qz, fus_qw, mad_qx, mad_qy, mad_qz, mad_qw, mah_qx, mah_qy, mah_qz, mah_qw);
 
             std::cout << "Saving " << sample_idx << "th sample in the " << buffer << " file \r";
 
             // Increase sample index
             sample_idx++;
         } // END OF: while (true)
-        outfile.close();
+        out_euler.close ();
+        out_trans_vel.close();
+        out_quaternion.close();
         return EXIT_SUCCESS;
     } // END OF: try
     catch (const rs2::error & e) {

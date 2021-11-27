@@ -83,14 +83,20 @@ extern float yaw_mah_rad;
 /* Return buffer of current date and time in YYYY-MM-DD-HH:mm:ss format */
 const std::string currentDateTime();
 
-/* Save headers in the output file */
-void saveHeadersInOutputFile(void);
+/* Save headers in the out_euler file */
+void saveHeadersInOutEulerFile(void);
+
+/* Save headers in the out_trans_vel file */
+void saveHeadersInOutTransVelfile(void);
+
+/* Save headers in the out_quaternion file */
+void saveHeadersInOutQuaternionFile(void);
 
 /* Save sample index, translation and velocity in the output file */
 void saveTransVelInOutputFile(int sample_idx, float trans_x, float trans_y, float trans_z, float vel_x, float vel_y, float vel_z);
 
 /* Save gyroscope's and accelerometer's raw data in the output file */
-void saveGyroAccInOutputFile(float gx_rad, float gy_rad, float gz_rad, float ax_rad, float ay_rad, float az_rad);
+void saveGyroAccInOutputFile(int sample_idx, float gx_rad, float gy_rad, float gz_rad, float ax_rad, float ay_rad, float az_rad);
 
 /* Convert rad/s^2 to g*/
 /* https://stackoverflow.com/questions/6291931/how-to-calculate-g-force-using-x-y-z-values-from-the-accelerometer-in-android/44421684 */
@@ -106,4 +112,4 @@ void saveRollPitchYawMadgwickInOutputFile (float roll_mad_deg, float pitch_mad_d
 void saveRollPitchYawMahonyInOutputFile (float roll_mah_deg, float pitch_mah_deg, float yaw_mah_deg, float roll_mah_rad, float pitch_mah_rad, float yaw_mah_rad);
 
 /* Save quaternions for all Algorithms in the output file */
-void saveQuaternionsInOutputFile(float fus_qx, float fus_qy, float fus_qz, float fus_qw, float mad_qx, float mad_qy, float mad_qz, float mad_qw, float mah_qx, float mah_qy, float mah_qz, float mah_qw);
+void saveQuaternionsInOutputFile(int sample_idx, float fus_qx, float fus_qy, float fus_qz, float fus_qw, float mad_qx, float mad_qy, float mad_qz, float mad_qw, float mah_qx, float mah_qy, float mah_qz, float mah_qw);
