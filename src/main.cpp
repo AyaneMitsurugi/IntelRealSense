@@ -116,10 +116,10 @@ void saveHeadersInOutputFile(void) {
         outfile << "Fusion Roll [rad],Fusion Pitch [rad],Fusion Yaw [rad],";
         outfile << "Madgwick Roll [degrees],Madgwick Pitch [degrees],Madgwick Yaw [degrees],";
         outfile << "Madgwick Roll [rad],Madgwick Pitch [rad],Madgwick Yaw [rad],";
-        outfile << "Mahony Roll [degrees],Mahony Pitch [degrees],Mahony Yaw [degrees]";
-        outfile << "Mahony Roll [rad],Mahony Pitch [rad],Mahony Yaw [rad]";
-        outfile << "Fusion qx,Fusion qy,Fusion qz,Fusion qw";
-        outfile << "Madgwick qx,Madgwick qy,Madgwick qz,Madgwick qw";
+        outfile << "Mahony Roll [degrees],Mahony Pitch [degrees],Mahony Yaw [degrees],";
+        outfile << "Mahony Roll [rad],Mahony Pitch [rad],Mahony Yaw [rad],";
+        outfile << "Fusion qx,Fusion qy,Fusion qz,Fusion qw,";
+        outfile << "Madgwick qx,Madgwick qy,Madgwick qz,Madgwick qw,";
         outfile << "Mahony qx,Mahony qy,Mahony qz,Mahony qw" << std::endl;
     }
 }
